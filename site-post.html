@@ -146,7 +146,9 @@ h2{font-size:clamp(1.9rem,4vw,2.9rem);letter-spacing:.002em}
 .voice{background:#fff;border:1px solid var(--line);padding:34px 30px}
 .voice p{font-family:var(--serif);font-style:italic;line-height:1.7}
 .voice b{display:block;margin-top:18px;font-size:.85rem;letter-spacing:.08em;color:var(--muted);font-weight:600}
-.voice .stars{color:var(--accent);letter-spacing:.2em;margin-bottom:14px}
+.voice .stars{color:var(--accent);letter-spacing:.2em;margin-bottom:6px}
+.voice .vtag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--accent);border:1px solid var(--line);padding:3px 10px;margin-bottom:14px}
 
 /* ─── CTA-Band ─── */
 #cta{background:var(--accent);color:#fff;text-align:center}
@@ -440,9 +442,9 @@ footer .legal{font-size:.8rem;max-width:520px}
     { "titel": "Gewohnheiten, die bleiben", "kurz": "Motivation ist überbewertet — Systeme schlagen Willenskraft. Routinen, mit denen man auch im Februar noch trainiert.", "dauer": "45–60 min + Q&A" }
   ],
   "stimmen": [
-    { "text": "Hier steht bald die erste echte Stimme aus unserem Vortrag bei happyfitness.", "name": "Teilnehmerin, Vortragsabend" },
-    { "text": "Auch diese Rezension sammeln wir direkt nach dem ersten Vortrag ein — versprochen ist versprochen.", "name": "Teilnehmer, Vortragsabend" },
-    { "text": "Und hier kommt die Stimme des Studio-Betreibers hin — der wichtigste Beweis für andere Studios.", "name": "Studio-Betreiber" }
+    { "tag": "Vortrag", "text": "Hier steht bald die erste echte Stimme aus unserem Vortrag bei happyfitness.", "name": "Teilnehmerin, Vortragsabend" },
+    { "tag": "Coaching", "text": "Hier kommt die erste Coaching-Kundenstimme hin — sobald es die ersten Ergebnisse gibt.", "name": "Coaching-Kundin" },
+    { "tag": "Studio", "text": "Und hier die Stimme des Studio-Betreibers — der wichtigste Beweis für andere Studios.", "name": "Studio-Betreiber" }
   ]
 }
 </script>
@@ -467,6 +469,7 @@ document.getElementById("talklist").innerHTML = VORTRAEGE.map((v,i)=>`
 
 document.getElementById("voicelist").innerHTML = STIMMEN.map((s,i)=>`
   <div class="voice rv" data-d="${i}">
+    ${s.tag?`<span class="vtag">${esc(s.tag)}</span>`:""}
     <div class="stars">★★★★★</div>
     <p>„${esc(s.text)}“</p>
     <b>${esc(s.name)}</b>
