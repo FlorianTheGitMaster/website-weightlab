@@ -348,62 +348,21 @@ footer .legal{font-size:.8rem;max-width:520px}
 <body data-v="10" data-wl-site="pre">
 
 <style>
-/* ═══════════════ 10 DESIGN-VARIANTEN ═══════════════
-   V1 Gold Noir = :root oben. V2–V10 überschreiben nur die Farbtokens. */
-body[data-v="2"]{ /* Champagner — hell & elegant */
-  --bg:#f7f1e6;--bg2:#f0e8d8;--panel:#fcf8f0;--panel2:#f4ede0;--ink:#2e2619;--muted:#75694f;--faint:#a1957b;
-  --gold:#a87f2f;--gold2:#86641c;--accent-ink:#fffaf0;
-  --line:rgba(168,127,47,.28);--line2:rgba(168,127,47,.45);--glow:rgba(168,127,47,.14);--stroke-faint:rgba(168,127,47,.18);
-  --band-stroke:rgba(168,127,47,.6);--band-fill:rgba(168,127,47,.14);--nav-bg:rgba(247,241,230,.85);--nav-bg2:rgba(247,241,230,.97);
-  --ghost-line:rgba(46,38,25,.32);--shadow:rgba(120,90,40,.18);--grain-o:.04}
-body[data-v="3"]{ /* Rosé — weich & feminin */
-  --bg:#f9f0ec;--bg2:#f3e6e0;--panel:#fdf7f3;--panel2:#f6ebe5;--ink:#3a2430;--muted:#8a6b76;--faint:#b3949d;
-  --gold:#b76e79;--gold2:#96525d;--accent-ink:#fff6f3;
-  --line:rgba(183,110,121,.28);--line2:rgba(183,110,121,.45);--glow:rgba(183,110,121,.14);--stroke-faint:rgba(183,110,121,.18);
-  --band-stroke:rgba(183,110,121,.6);--band-fill:rgba(183,110,121,.13);--nav-bg:rgba(249,240,236,.85);--nav-bg2:rgba(249,240,236,.97);
-  --ghost-line:rgba(58,36,48,.32);--shadow:rgba(140,80,90,.16);--grain-o:.04}
-body[data-v="4"]{ /* Salbei — natürlich & ruhig */
-  --bg:#f1f3ec;--bg2:#e9ede0;--panel:#f8faf3;--panel2:#eef2e5;--ink:#262d1e;--muted:#68715c;--faint:#949e86;
-  --gold:#6e7f4f;--gold2:#55663a;--accent-ink:#f7faf0;
-  --line:rgba(110,127,79,.28);--line2:rgba(110,127,79,.45);--glow:rgba(110,127,79,.13);--stroke-faint:rgba(110,127,79,.18);
-  --band-stroke:rgba(110,127,79,.6);--band-fill:rgba(110,127,79,.13);--nav-bg:rgba(241,243,236,.85);--nav-bg2:rgba(241,243,236,.97);
-  --ghost-line:rgba(38,45,30,.32);--shadow:rgba(80,95,55,.15);--grain-o:.04}
-body[data-v="5"]{ /* Terracotta — warm & erdig */
-  --bg:#f8efe7;--bg2:#f2e4d7;--panel:#fcf6ef;--panel2:#f4e7da;--ink:#33221a;--muted:#7d6355;--faint:#a98e7e;
-  --gold:#b45a3c;--gold2:#93452c;--accent-ink:#fdf4ee;
-  --line:rgba(180,90,60,.28);--line2:rgba(180,90,60,.45);--glow:rgba(180,90,60,.13);--stroke-faint:rgba(180,90,60,.17);
-  --band-stroke:rgba(180,90,60,.6);--band-fill:rgba(180,90,60,.12);--nav-bg:rgba(248,239,231,.85);--nav-bg2:rgba(248,239,231,.97);
-  --ghost-line:rgba(51,34,26,.32);--shadow:rgba(150,80,50,.16);--grain-o:.04}
-body[data-v="6"]{ /* Mitternacht — tief & modern */
-  --bg:#10151d;--bg2:#131a24;--panel:#171f2b;--panel2:#1c2532;--ink:#e9e4d9;--muted:#9aa2ad;--faint:#6d7580;
-  --gold:#c6895a;--gold2:#dfa877;--accent-ink:#10151d;
-  --line:rgba(198,137,90,.22);--line2:rgba(198,137,90,.4);--glow:rgba(198,137,90,.15);--stroke-faint:rgba(198,137,90,.13);
-  --band-stroke:rgba(198,137,90,.6);--band-fill:rgba(233,228,217,.3);--nav-bg:rgba(16,21,29,.82);--nav-bg2:rgba(16,21,29,.97);
-  --ghost-line:rgba(233,228,217,.3);--shadow:rgba(0,0,0,.5);--grain-o:.05}
-body[data-v="7"]{ /* Pure Studio — minimal & klar */
-  --bg:#fafaf7;--bg2:#f2f1ec;--panel:#ffffff;--panel2:#f6f5f0;--ink:#16140f;--muted:#6c675c;--faint:#9a9489;
-  --gold:#a5853b;--gold2:#826422;--accent-ink:#ffffff;
-  --line:rgba(20,18,12,.12);--line2:rgba(20,18,12,.3);--glow:rgba(165,133,59,.12);--stroke-faint:rgba(20,18,12,.1);
-  --band-stroke:rgba(165,133,59,.55);--band-fill:rgba(165,133,59,.1);--nav-bg:rgba(250,250,247,.86);--nav-bg2:rgba(250,250,247,.97);
-  --ghost-line:rgba(22,20,15,.3);--shadow:rgba(30,25,15,.12);--grain-o:.03}
-body[data-v="8"]{ /* Mauve — sanft & premium */
-  --bg:#f5eff4;--bg2:#eee4ec;--panel:#faf5f9;--panel2:#f1e8f0;--ink:#322233;--muted:#7d6a7e;--faint:#a893a9;
-  --gold:#8d5c76;--gold2:#6f425a;--accent-ink:#faf2f8;
-  --line:rgba(141,92,118,.26);--line2:rgba(141,92,118,.44);--glow:rgba(141,92,118,.13);--stroke-faint:rgba(141,92,118,.17);
-  --band-stroke:rgba(141,92,118,.6);--band-fill:rgba(141,92,118,.12);--nav-bg:rgba(245,239,244,.85);--nav-bg2:rgba(245,239,244,.97);
-  --ghost-line:rgba(50,34,51,.32);--shadow:rgba(100,60,90,.15);--grain-o:.04}
-body[data-v="9"]{ /* Espresso — warm & luxuriös */
-  --bg:#1e1712;--bg2:#241c15;--panel:#2a211a;--panel2:#31271f;--ink:#f3eadc;--muted:#b5a68f;--faint:#8a7c66;
-  --gold:#d9b46e;--gold2:#ecd094;--accent-ink:#1e1712;
-  --line:rgba(217,180,110,.24);--line2:rgba(217,180,110,.42);--glow:rgba(217,180,110,.17);--stroke-faint:rgba(217,180,110,.14);
-  --band-stroke:rgba(217,180,110,.62);--band-fill:rgba(243,234,220,.34);--nav-bg:rgba(30,23,18,.82);--nav-bg2:rgba(30,23,18,.97);
-  --ghost-line:rgba(243,234,220,.3);--shadow:rgba(0,0,0,.5);--grain-o:.05}
+/* ═══════════════ DESIGN-VARIANTEN ═══════════════
+   Entscheidungs-Duell (21.07.): nur noch 2 Varianten —
+   V10 „Sand & Stein" (Default) vs. V11 „Weiß & Salbei" (= exakte Farbwelt der Post-Site). */
 body[data-v="10"]{ /* Sand & Stein — zeitlos & dezent */
   --bg:#f2efe9;--bg2:#eae6dc;--panel:#f9f7f1;--panel2:#efebe2;--ink:#29251d;--muted:#6f6a5d;--faint:#9b9588;
   --gold:#8f7a52;--gold2:#71603e;--accent-ink:#f8f5ee;
   --line:rgba(143,122,82,.28);--line2:rgba(143,122,82,.46);--glow:rgba(143,122,82,.13);--stroke-faint:rgba(143,122,82,.17);
   --band-stroke:rgba(143,122,82,.6);--band-fill:rgba(143,122,82,.12);--nav-bg:rgba(242,239,233,.85);--nav-bg2:rgba(242,239,233,.97);
   --ghost-line:rgba(41,37,29,.32);--shadow:rgba(110,95,60,.15);--grain-o:.04}
+body[data-v="11"]{ /* Weiß & Salbei — Farbwelt der Post-Site (Logo-Grün) */
+  --bg:#ffffff;--bg2:#f7f6f2;--panel:#ffffff;--panel2:#f7f6f2;--ink:#1c1c19;--muted:#6e6e66;--faint:#a3a399;
+  --gold:#6e7f4f;--gold2:#55663a;--accent-ink:#ffffff;
+  --line:#e7e6df;--line2:rgba(110,127,79,.45);--glow:rgba(110,127,79,.12);--stroke-faint:rgba(110,127,79,.15);
+  --band-stroke:rgba(110,127,79,.55);--band-fill:rgba(110,127,79,.1);--nav-bg:rgba(255,255,255,.88);--nav-bg2:rgba(255,255,255,.97);
+  --ghost-line:rgba(28,28,25,.3);--shadow:rgba(30,30,20,.1);--grain-o:.025}
 </style>
 
 <div class="grain" aria-hidden="true"></div>
@@ -899,18 +858,10 @@ const BAND_V     = OV.band_v     || D.band_v;
 const HEADLINE_C = OV.headline_c || D.headline_c;
 const HEADLINE_V = OV.headline_v || D.headline_v;
 
-/* Design-Varianten (Registerkarten unten). d1/d2 = Farben des Vorschau-Punkts */
+/* Design-Varianten (Registerkarten unten): das Entscheidungs-Duell. v = data-v im CSS */
 const THEMES = [
-  { name:"Gold Noir",    d1:"#14100d", d2:"#c9a35c" },
-  { name:"Champagner",   d1:"#f7f1e6", d2:"#a87f2f" },
-  { name:"Rosé",         d1:"#f9f0ec", d2:"#b76e79" },
-  { name:"Salbei",       d1:"#f1f3ec", d2:"#6e7f4f" },
-  { name:"Terracotta",   d1:"#f8efe7", d2:"#b45a3c" },
-  { name:"Mitternacht",  d1:"#10151d", d2:"#c6895a" },
-  { name:"Pure Studio",  d1:"#fafaf7", d2:"#a5853b" },
-  { name:"Mauve",        d1:"#f5eff4", d2:"#8d5c76" },
-  { name:"Espresso",     d1:"#1e1712", d2:"#d9b46e" },
-  { name:"Sand & Stein", d1:"#f2efe9", d2:"#8f7a52" }
+  { v:10, name:"Sand & Stein",  d1:"#f2efe9", d2:"#8f7a52" },
+  { v:11, name:"Weiß & Salbei", d1:"#ffffff", d2:"#6e7f4f" }
 ];
 
 /* ═══════════════════════════════════════════════════════════════════
@@ -938,9 +889,9 @@ const ICONS = {
 /* ── Design-Varianten-Registerkarten ── */
 (function(){
   const wrap = document.getElementById("vtabs");
-  const cur = +document.body.dataset.v || 1;
+  const cur = +document.body.dataset.v || 10;
   wrap.innerHTML = THEMES.map((t,i)=>`
-    <button role="tab" data-v="${i+1}" aria-selected="${i+1===cur}" class="${i+1===cur?"on":""}" title="${esc(t.name)}">
+    <button role="tab" data-v="${t.v}" aria-selected="${t.v===cur}" class="${t.v===cur?"on":""}" title="${esc(t.name)}">
       <i class="dot" style="--d1:${esc(t.d1)};--d2:${esc(t.d2)}"></i><b>${String(i+1).padStart(2,"0")}</b><span class="nm">${esc(t.name)}</span>
     </button>`).join("");
   wrap.addEventListener("click",e=>{
