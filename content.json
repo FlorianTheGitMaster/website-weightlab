@@ -1,0 +1,6 @@
+{
+  "activeSite": "pre",
+  "accent": { "post": "#6e7f4f" },
+  "pre":  { "texts": {}, "data": {}, "images": {} },
+  "post": { "texts": {}, "data": {}, "images": {} }
+}

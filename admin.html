@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WeightLab – Admin</title>
+<meta name="robots" content="noindex,nofollow">
+<style>
+:root{--accent:#6e7f4f;--ink:#1c1c19;--muted:#6e6e66;--faint:#a3a399;--line:#e7e6df;--soft:#f7f6f2;
+  --serif:Georgia,serif;--sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--sans);color:var(--ink);background:var(--soft);line-height:1.6}
+.wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+header .bar{display:flex;align-items:center;justify-content:space-between;height:64px}
+header .logo{font-family:var(--serif);font-size:19px}
+header .logo b{font-weight:400;color:var(--accent)}
+header .actions{display:flex;gap:10px;align-items:center}
+.btn{background:var(--accent);color:#fff;border:none;font:inherit;font-size:13px;font-weight:600;letter-spacing:.06em;
+  padding:11px 22px;cursor:pointer;transition:opacity .2s}
+.btn:hover{opacity:.85}
+.btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.btn.small{padding:7px 14px;font-size:12px}
+.btn.danger{background:#b4483c}
+main{padding:34px 0 90px}
+.card{background:#fff;border:1px solid var(--line);padding:28px;margin-bottom:22px}
+.card h2{font-family:var(--serif);font-weight:400;font-size:1.4rem;margin-bottom:6px}
+.card .hint{color:var(--muted);font-size:.9rem;margin-bottom:18px}
+label{display:block;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin:16px 0 6px}
+input[type=text],input[type=password],textarea,select{width:100%;font:inherit;font-size:.95rem;padding:11px 13px;
+  border:1px solid var(--line);background:#fff;border-radius:0}
+input:focus,textarea:focus{outline:none;border-color:var(--accent)}
+textarea{min-height:88px;resize:vertical}
+.default{font-size:.8rem;color:var(--faint);margin-top:4px;white-space:pre-wrap;max-height:70px;overflow:auto}
+.tabs{display:flex;gap:0;margin-bottom:24px;border:1px solid var(--line);background:#fff;flex-wrap:wrap}
+.tabs button{flex:1;padding:13px 10px;font:inherit;font-size:13px;font-weight:600;background:none;border:none;cursor:pointer;
+  color:var(--muted);border-bottom:2px solid transparent;white-space:nowrap}
+.tabs button.on{color:var(--ink);border-bottom-color:var(--accent)}
+.tabpane{display:none}.tabpane.on{display:block}
+.radio-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:6px}
+.radio-row label{display:flex;align-items:center;gap:10px;font-size:.95rem;font-weight:400;letter-spacing:0;
+  text-transform:none;color:var(--ink);border:1px solid var(--line);padding:14px 18px;cursor:pointer;flex:1;min-width:220px;margin:0}
+.radio-row label.on{border-color:var(--accent);background:var(--soft)}
+.swatches{display:flex;gap:10px;margin-top:8px;flex-wrap:wrap;align-items:center}
+.sw{width:38px;height:38px;border-radius:50%;border:2px solid var(--line);cursor:pointer}
+.sw.on{border-color:var(--ink);box-shadow:0 0 0 3px #fff inset}
+.item{border:1px solid var(--line);padding:16px 18px;margin-bottom:12px;background:#fff}
+.item .ihead{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--faint);letter-spacing:.1em;text-transform:uppercase}
+.imgrow{display:flex;gap:18px;align-items:center;border:1px solid var(--line);padding:16px;margin-bottom:12px;background:#fff;flex-wrap:wrap}
+.imgrow .prev{width:110px;height:82px;background:var(--soft);border:1px solid var(--line);display:flex;align-items:center;
+  justify-content:center;font-size:10px;color:var(--faint);text-align:center;padding:4px;background-size:cover;background-position:center;flex:0 0 auto}
+.imgrow .meta{flex:1;min-width:200px}
+.imgrow .meta b{font-size:.95rem}
+.imgrow .meta div{font-size:.82rem;color:var(--muted)}
+#toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--ink);color:#fff;
+  padding:13px 26px;font-size:.9rem;transition:transform .3s;z-index:99;max-width:90vw}
+#toast.show{transform:translateX(-50%) translateY(0)}
+#toast.err{background:#b4483c}
+.savebar{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);padding:12px 0;z-index:60}
+.savebar .wrap{display:flex;justify-content:space-between;align-items:center;gap:14px}
+.savebar .state{font-size:.85rem;color:var(--muted)}
+.pill{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border:1px solid var(--line);color:var(--muted)}
+.pill.live{border-color:var(--accent);color:var(--accent)}
+#login{max-width:520px;margin:80px auto}
+a{color:var(--accent)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <span class="logo">Weight<b>Lab</b> · Admin</span>
+    <div class="actions">
+      <a class="btn ghost small" href="site-pre.html" target="_blank">Pre ansehen</a>
+      <a class="btn ghost small" href="site-post.html" target="_blank">Post ansehen</a>
+      <button class="btn ghost small" id="logout" style="display:none">Token wechseln</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div id="login" class="card">
+    <h2>Anmelden</h2>
+    <p class="hint">Zum Bearbeiten brauchst du ein GitHub-Token mit Schreibzugriff auf <b>FlorianTheGitMaster/website-weightlab</b> (Contents: Read &amp; Write). Das Token bleibt nur in diesem Browser (localStorage) — es wird nirgendwo sonst hingeschickt außer an die GitHub-API.</p>
+    <label for="token">GitHub-Token</label>
+    <input type="password" id="token" placeholder="github_pat_… oder ghp_…">
+    <br><br>
+    <button class="btn" id="loginbtn">Anmelden &amp; laden</button>
+  </div>
+
+  <div id="app" style="display:none">
+    <div class="tabs" id="tabs">
+      <button data-tab="allgemein" class="on">Live-Schaltung &amp; Farbe</button>
+      <button data-tab="pre">Pre-Website</button>
+      <button data-tab="post">Post-Website</button>
+      <button data-tab="bilder">Bilder</button>
+    </div>
+
+    <div class="tabpane on" id="pane-allgemein">
+      <div class="card">
+        <h2>Welche Website ist live?</h2>
+        <p class="hint">Der Umschalter wirkt auf <b>index.html</b> — Besucher der Domain sehen die gewählte Website. (Nach dem Speichern dauert es je nach Hosting ca. 1–2 Minuten.)</p>
+        <div class="radio-row" id="siteswitch">
+          <label data-v="pre"><input type="radio" name="site" value="pre"> <span><b>Pre-Website</b><br><small>Jetzt-Design (Sand &amp; Stein, ohne Fotos)</small></span></label>
+          <label data-v="post"><input type="radio" name="site" value="post"> <span><b>Post-Website</b><br><small>Foto-Design (Weiß + Akzentfarbe)</small></span></label>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Akzentfarbe der Post-Website</h2>
+        <p class="hint">Weiß bleibt Basis — die Akzentfarbe ist frei wählbar (Salbei, Schwarz, …).</p>
+        <div class="swatches" id="swatches"></div>
+        <label for="accentfree">Eigene Farbe (Hex)</label>
+        <input type="text" id="accentfree" placeholder="#6e7f4f" style="max-width:200px">
+      </div>
+    </div>
+
+    <div class="tabpane" id="pane-pre"></div>
+    <div class="tabpane" id="pane-post"></div>
+
+    <div class="tabpane" id="pane-bilder">
+      <div class="card">
+        <h2>Bilder der Post-Website</h2>
+        <p class="hint">Bilder landen als Commit im Ordner <b>img/</b>. Quer fürs Web, ideal &lt; 500 KB pro Bild (vorher verkleinern).</p>
+        <div id="imgslots"></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div class="savebar" id="savebar" style="display:none">
+  <div class="wrap">
+    <span class="state" id="savestate">Geladen.</span>
+    <button class="btn" id="save">Speichern (Commit)</button>
+  </div>
+</div>
+<div id="toast"></div>
+
+<script>
+const OWNER="FlorianTheGitMaster", REPO="website-weightlab", BRANCH="main";
+const API=`https://api.github.com/repos/${OWNER}/${REPO}/contents/`;
+const PRESETS=[["Salbei","#6e7f4f"],["Schwarz","#1a1a18"],["Gold","#a5853b"],["Terracotta","#b45a3c"],["Mitternachtsblau","#2e4057"]];
+let token=localStorage.getItem("wl_token")||"";
+let content=null, contentSha=null, defaults={pre:{texts:{},data:{},imgs:[]},post:{texts:{},data:{},imgs:[]}};
+
+const $=s=>document.querySelector(s);
+const toast=(m,err)=>{const t=$("#toast");t.textContent=m;t.className=err?"show err":"show";setTimeout(()=>t.className="",3600)};
+
+/* ── UTF-8 ↔ Base64 ── */
+const b64enc=s=>{const b=new TextEncoder().encode(s);let x="";b.forEach(c=>x+=String.fromCharCode(c));return btoa(x)};
+const b64dec=s=>{const x=atob(s.replace(/\n/g,""));const b=new Uint8Array(x.length);for(let i=0;i<x.length;i++)b[i]=x.charCodeAt(i);return new TextDecoder().decode(b)};
+
+/* ── GitHub-API ── */
+async function gh(path,opts={}){
+  const r=await fetch(API+path+(opts.method?"":"?ref="+BRANCH+"&ts="+Date.now()),Object.assign({
+    headers:{Authorization:"Bearer "+token,Accept:"application/vnd.github+json"}},opts));
+  if(r.status===404)return null;
+  if(!r.ok)throw new Error("GitHub-API "+r.status+": "+(await r.text()).slice(0,180));
+  return r.json();
+}
+async function ghPut(path,contentB64,message,sha){
+  const body={message,content:contentB64,branch:BRANCH};
+  if(sha)body.sha=sha;
+  return gh(path,{method:"PUT",body:JSON.stringify(body)});
+}
+
+/* ── Defaults aus den Site-Dateien ernten ── */
+async function harvest(site,file){
+  const f=await gh(file);
+  const html=b64dec(f.content);
+  const doc=new DOMParser().parseFromString(html,"text/html");
+  const texts={};
+  doc.querySelectorAll("[data-t]").forEach(el=>{texts[el.dataset.t]=el.innerHTML.trim()});
+  const defEl=doc.getElementById("wl-defaults");
+  const data=defEl?JSON.parse(defEl.textContent):{};
+  const imgs=[...doc.querySelectorAll("[data-img]")].map(el=>({key:el.dataset.img,label:el.dataset.label||el.dataset.img}));
+  defaults[site]={texts,data,imgs};
+}
+
+/* ── Login & Laden ── */
+async function load(){
+  $("#savestate").textContent="Lade …";
+  const c=await gh("content.json");
+  if(c){content=JSON.parse(b64dec(c.content));contentSha=c.sha}
+  else{content={activeSite:"pre",accent:{post:"#6e7f4f"},pre:{texts:{},data:{},images:{}},post:{texts:{},data:{},images:{}}};contentSha=null}
+  ["pre","post"].forEach(s=>{content[s]=content[s]||{};content[s].texts=content[s].texts||{};content[s].data=content[s].data||{};content[s].images=content[s].images||{}});
+  content.accent=content.accent||{post:"#6e7f4f"};
+  await harvest("pre","site-pre.html");
+  await harvest("post","site-post.html");
+  render();
+  $("#login").style.display="none";$("#app").style.display="block";$("#savebar").style.display="block";$("#logout").style.display="inline-block";
+  $("#savestate").textContent="Geladen. Änderungen werden erst mit „Speichern“ committet.";
+}
+$("#loginbtn").onclick=async()=>{
+  token=$("#token").value.trim();
+  if(!token)return toast("Bitte Token eingeben.",1);
+  try{await load();localStorage.setItem("wl_token",token);toast("Angemeldet.")}
+  catch(e){toast("Login fehlgeschlagen: "+e.message,1)}
+};
+$("#logout").onclick=()=>{localStorage.removeItem("wl_token");location.reload()};
+
+/* ── Rendern ── */
+function render(){
+  /* Live-Schaltung */
+  document.querySelectorAll("#siteswitch label").forEach(l=>{
+    const on=l.dataset.v===content.activeSite;
+    l.classList.toggle("on",on);l.querySelector("input").checked=on;
+    l.querySelector("input").onchange=()=>{content.activeSite=l.dataset.v;render()};
+  });
+  /* Farbe */
+  const sw=$("#swatches");sw.innerHTML="";
+  PRESETS.forEach(([name,hex])=>{
+    const d=document.createElement("button");d.className="sw"+(content.accent.post===hex?" on":"");
+    d.style.background=hex;d.title=name;
+    d.onclick=()=>{content.accent.post=hex;$("#accentfree").value=hex;render()};
+    sw.appendChild(d);
+  });
+  $("#accentfree").value=content.accent.post||"";
+  $("#accentfree").oninput=e=>{const v=e.target.value.trim();if(/^#[0-9a-fA-F]{6}$/.test(v)){content.accent.post=v;
+    document.querySelectorAll(".sw").forEach(x=>x.classList.remove("on"))}};
+  renderSite("pre");renderSite("post");renderImgs();
+}
+
+function fieldHTML(site,key,def,ov){
+  const long=def.length>90||def.includes("<");
+  const id=`t-${site}-${key.replace(/[^a-z0-9]/gi,"_")}`;
+  return `<label for="${id}">${key}</label>
+  ${long?`<textarea id="${id}" data-site="${site}" data-key="${key}">${ov?ov.replace(/</g,"&lt;"):""}</textarea>`
+        :`<input type="text" id="${id}" data-site="${site}" data-key="${key}" value="${(ov||"").replace(/"/g,"&quot;")}">`}
+  <div class="default">Standard: ${def.replace(/</g,"&lt;")}</div>`;
+}
+
+function renderSite(site){
+  const pane=$("#pane-"+site);
+  const d=defaults[site];
+  const texts=Object.keys(d.texts).map(k=>fieldHTML(site,k,d.texts[k],content[site].texts[k]||"")).join("");
+  let dataHTML="";
+  Object.keys(d.data).forEach(arrKey=>{
+    const cur=content[site].data[arrKey]||JSON.parse(JSON.stringify(d.data[arrKey]));
+    if(Array.isArray(cur)){
+      dataHTML+=`<div class="card"><h2>${arrKey}</h2><div id="arr-${site}-${arrKey}">`+
+        cur.map((item,i)=>itemHTML(site,arrKey,item,i)).join("")+
+        `</div><button class="btn ghost small" onclick="addItem('${site}','${arrKey}')">+ Eintrag</button></div>`;
+    }else{
+      dataHTML+=`<div class="card"><h2>${arrKey}</h2>`+
+        Object.keys(cur).map(f=>`<label>${f}</label><input type="text" data-obj="${site}.${arrKey}.${f}" value="${String(cur[f]??"").replace(/"/g,"&quot;")}">`).join("")+
+        `</div>`;
+    }
+    if(!content[site].data[arrKey])content[site].data[arrKey]=cur;
+  });
+  pane.innerHTML=`<div class="card"><h2>Texte</h2><p class="hint">Leeres Feld = Standardtext bleibt. HTML (z. B. &lt;em&gt;, &lt;b&gt;, &lt;li&gt;) ist erlaubt.</p>${texts}</div>${dataHTML}`;
+  pane.querySelectorAll("[data-key]").forEach(el=>{
+    el.oninput=()=>{content[el.dataset.site].texts[el.dataset.key]=el.value};
+  });
+  pane.querySelectorAll("[data-obj]").forEach(el=>{
+    el.oninput=()=>{const [s,o,f]=el.dataset.obj.split(".");content[s].data[o][f]=el.value};
+  });
+  pane.querySelectorAll("[data-item]").forEach(el=>{
+    el.oninput=()=>{const [s,a,i,f]=el.dataset.item.split("|");
+      const orig=(defaults[s].data[a]||[])[0];
+      let v=el.value;
+      if(orig&&typeof orig[f]==="number"){const n=parseFloat(v);v=isNaN(n)?0:n}
+      content[s].data[a][+i][f]=v};
+  });
+}
+function itemHTML(site,arrKey,item,i){
+  const fields=Object.keys(item).map(f=>{
+    if(typeof item[f]==="object")return "";
+    return `<label>${f}</label><input type="text" data-item="${site}|${arrKey}|${i}|${f}" value="${String(item[f]??"").replace(/"/g,"&quot;")}">`;
+  }).join("");
+  return `<div class="item"><div class="ihead"><span>#${i+1}</span>
+    <button class="btn danger small" onclick="delItem('${site}','${arrKey}',${i})">Entfernen</button></div>${fields}</div>`;
+}
+window.addItem=(site,arrKey)=>{
+  const arr=content[site].data[arrKey];
+  const proto=arr[0]||defaults[site].data[arrKey][0]||{};
+  const empty={};Object.keys(proto).forEach(k=>empty[k]=typeof proto[k]==="number"?0:"");
+  arr.push(empty);renderSite(site);
+};
+window.delItem=(site,arrKey,i)=>{content[site].data[arrKey].splice(i,1);renderSite(site)};
+
+/* ── Bilder ── */
+async function renderImgs(){
+  const box=$("#imgslots");box.innerHTML="";
+  for(const slot of defaults.post.imgs){
+    const cur=content.post.images[slot.key]||"";
+    const row=document.createElement("div");row.className="imgrow";
+    row.innerHTML=`<div class="prev" id="prev-${slot.key}">${cur?"":"kein Bild"}</div>
+      <div class="meta"><b>${slot.key}</b><div>${slot.label}</div><div>${cur||"— Standard-Platzhalter —"}</div></div>
+      <input type="file" accept="image/*" style="display:none" id="file-${slot.key}">
+      <button class="btn ghost small" onclick="document.getElementById('file-${slot.key}').click()">Hochladen</button>
+      ${cur?`<button class="btn danger small" data-clear="${slot.key}">Entfernen</button>`:""}`;
+    box.appendChild(row);
+    if(cur){
+      try{const f=await gh(cur);if(f)$("#prev-"+slot.key).style.backgroundImage=`url(data:image/*;base64,${f.content.replace(/\n/g,"")})`}catch(e){}
+    }
+    row.querySelector(`#file-${slot.key}`).onchange=async e=>{
+      const file=e.target.files[0];if(!file)return;
+      if(file.size>1500000)return toast("Bild zu groß (max. 1,5 MB) — bitte vorher verkleinern.",1);
+      const ext=(file.name.match(/\.\w+$/)||[".jpg"])[0].toLowerCase();
+      const path=`img/post-${slot.key}${ext}`;
+      const buf=new Uint8Array(await file.arrayBuffer());
+      let bin="";buf.forEach(c=>bin+=String.fromCharCode(c));
+      try{
+        const existing=await gh(path);
+        await ghPut(path,btoa(bin),`Bild: ${slot.key}`,existing?existing.sha:undefined);
+        content.post.images[slot.key]=path;
+        toast("Bild hochgeladen — jetzt noch „Speichern“ klicken.");
+        renderImgs();
+      }catch(err){toast("Upload fehlgeschlagen: "+err.message,1)}
+    };
+    const clr=row.querySelector("[data-clear]");
+    if(clr)clr.onclick=()=>{delete content.post.images[slot.key];renderImgs();toast("Bild entfernt — jetzt noch „Speichern“ klicken.")};
+  }
+}
+
+/* ── Speichern ── */
+$("#save").onclick=async()=>{
+  try{
+    $("#savestate").textContent="Speichere …";
+    /* leere Text-Overrides aufräumen */
+    ["pre","post"].forEach(s=>{Object.keys(content[s].texts).forEach(k=>{if(!content[s].texts[k])delete content[s].texts[k]})});
+    const res=await ghPut("content.json",b64enc(JSON.stringify(content,null,2)),
+      "Admin: Inhalte aktualisiert ("+new Date().toLocaleString("de-AT")+")",contentSha);
+    contentSha=res.content.sha;
+    $("#savestate").textContent="Gespeichert um "+new Date().toLocaleTimeString("de-AT")+". Live nach Hosting-Redeploy (~1–2 min).";
+    toast("Gespeichert & committet ✓");
+  }catch(e){
+    $("#savestate").textContent="Fehler beim Speichern.";
+    if(String(e).includes("409"))toast("Konflikt: content.json wurde parallel geändert — Seite neu laden.",1);
+    else toast("Speichern fehlgeschlagen: "+e.message,1);
+  }
+};
+
+/* ── Tabs ── */
+document.querySelectorAll("#tabs button").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll("#tabs button").forEach(x=>x.classList.toggle("on",x===b));
+  document.querySelectorAll(".tabpane").forEach(p=>p.classList.toggle("on",p.id==="pane-"+b.dataset.tab));
+});
+
+/* Auto-Login, wenn Token vorhanden */
+if(token){$("#token").value=token;load().catch(e=>{toast("Automatisches Laden fehlgeschlagen: "+e.message,1)})}
+</script>
+</body>
+</html>
