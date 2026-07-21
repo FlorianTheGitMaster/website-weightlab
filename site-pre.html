@@ -182,6 +182,17 @@ section{position:relative;padding:110px 0}
 .bcard p{color:var(--muted);font-size:.95rem;line-height:1.7}
 .cardgrid.three{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
 
+/* ═══════════════ DUO-LEISTE (Coaching: wir zwei) ═══════════════ */
+.duo{padding:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg2)}
+.duo .drow{display:grid;grid-template-columns:1fr auto 1fr;align-items:center}
+.duo .dcell{display:flex;align-items:center;justify-content:center;gap:18px;padding:34px 20px}
+.duo .dmono{width:58px;height:58px;border-radius:50%;border:1px solid var(--line2);display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-style:italic;font-size:1.5rem;color:var(--gold);flex:0 0 auto;background:var(--panel)}
+.duo .dtxt b{font-family:var(--serif);font-weight:400;font-size:1.25rem;display:block;line-height:1.3}
+.duo .dtxt span{color:var(--muted);font-size:.92rem}
+.duo .damp{font-family:var(--serif);font-style:italic;font-size:2rem;color:var(--gold);padding:0 10px}
+@media(max-width:700px){.duo .drow{grid-template-columns:1fr}.duo .damp{text-align:center;padding:0}.duo .dcell{padding:20px}}
+
 /* ═══════════════ STATS ═══════════════ */
 .stats{padding:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg2)}
 .stats .row{display:grid;grid-template-columns:repeat(4,1fr)}
@@ -403,9 +414,9 @@ footer .legal{font-size:.8rem;max-width:520px}
   </div>
 </section>
 
-<div class="stats">
+<div class="duo">
   <div class="wrap">
-    <div class="row statrow" id="statrow-c"></div>
+    <div class="drow" id="duorow"></div>
   </div>
 </div>
 
@@ -769,11 +780,9 @@ footer .legal{font-size:.8rem;max-width:520px}
     "Ein besseres Körpergefühl: Schlaf, Verdauung, Wohlbefinden",
     "Wissen, das bleibt — du verstehst, was du tust und warum"
   ],
-  "stats_c": [
-    { "end": 2, "prefix": "", "suffix": "", "lbl": "Experten an deiner Seite" },
-    { "end": 1, "prefix": "", "suffix": "", "lbl": "Plan aus einer Hand" },
-    { "end": 100, "prefix": "", "suffix": " %", "lbl": "auf dich zugeschnitten" },
-    { "end": 0, "prefix": "", "suffix": "", "lbl": "Crash-Diäten & Dogmen" }
+  "duo_c": [
+    { "initial": "F", "name": "Florian", "role": "kümmert sich um deine Ernährung" },
+    { "initial": "M", "name": "Manuel", "role": "kümmert sich um dein Krafttraining" }
   ],
   "stats_v": [
     { "end": 60, "prefix": "45–", "suffix": "", "lbl": "Minuten + Q&A" },
@@ -787,7 +796,7 @@ footer .legal{font-size:.8rem;max-width:520px}
     { "titel": "Ankündigung", "text": "Ihr kündigt den Abend an — die fertige Text- und Grafik-Vorlage dafür liefern wir mit." },
     { "titel": "Der Vortrag", "text": "45–60 Minuten Praxiswissen plus offene Fragerunde. Danach bleiben wir da, solange deine Mitglieder Fragen haben." }
   ],
-  "band_c": ["Gewohnheiten","Krafttraining","Ernährung","Gesundheit","Fit im Alter","Energie im Alltag"],
+  "band_c": ["Jo-Jo-Effekt","Heißhunger","Keine Zeit","Stress-Essen","Diät-Frust","Träger Stoffwechsel","Immer wieder von vorn"],
   "band_v": ["Ernährung","Training","Gewohnheiten","Mythen aufräumen","Kundenbindung"],
   "headline_c": [
     {"t":"Zwei"},{"t":"Experten."},{"t":"Ein"},{"t":"Ziel:"},{"t":"dir"},{"t":"zeigen,"},{"t":"wie"},
@@ -811,7 +820,7 @@ const VORTRAEGE  = OV.vortraege  || D.vortraege;
 const BENEFITS   = OV.benefits   || D.benefits;
 const KERNPUNKTE = OV.kernpunkte || D.kernpunkte;
 const ERGEBNISSE = OV.ergebnisse || D.ergebnisse;
-const STATS_C    = OV.stats_c    || D.stats_c;
+const DUO_C      = OV.duo_c      || D.duo_c;
 const STATS_V    = OV.stats_v    || D.stats_v;
 const ABLAUF     = OV.ablauf     || D.ablauf;
 const BAND_C     = OV.band_c     || D.band_c;
@@ -858,8 +867,12 @@ document.getElementById("ergebnisliste").innerHTML = ERGEBNISSE.map(t=>`<li>${es
 
 const statHTML = s => `
   <div class="stat"><div class="num" data-end="${s.end}" data-prefix="${esc(s.prefix)}" data-suffix="${esc(s.suffix)}">${esc(s.prefix)}0${esc(s.suffix)}</div><div class="lbl">${esc(s.lbl)}</div></div>`;
-document.getElementById("statrow-c").innerHTML = STATS_C.map(statHTML).join("");
 document.getElementById("statrow-v").innerHTML = STATS_V.map(statHTML).join("");
+
+/* Duo-Leiste (Coaching): wir zwei — wer kümmert sich um was */
+const duoCell = p => `<div class="dcell"><span class="dmono">${esc(p.initial)}</span><span class="dtxt"><b>${esc(p.name)}</b><span>${esc(p.role)}</span></span></div>`;
+document.getElementById("duorow").innerHTML =
+  duoCell(DUO_C[0]) + `<span class="damp" aria-hidden="true">&</span>` + duoCell(DUO_C[1]);
 
 document.getElementById("talkgrid").innerHTML = VORTRAEGE.map((v,i)=>`
   <article class="talk reveal" data-d="${i%2}">
