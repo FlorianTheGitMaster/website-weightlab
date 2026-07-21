@@ -16,6 +16,7 @@
   --line2:rgba(110,127,79,.45);
   --gold:#6e7f4f;
   --gold2:#55663a;
+  --bronze:#7c5e33;
   --ink:#1c1c19;
   --muted:#6e6e66;
   --faint:#a3a399;
@@ -109,8 +110,7 @@ section{position:relative;padding:110px 0}
 .kicker{font-family:var(--cond);display:inline-block;font-size:12px;font-weight:700;letter-spacing:.34em;
   text-transform:uppercase;color:var(--gold)}
 .kicker b{color:var(--ink);font-weight:800}
-.vnum{font-family:var(--cond);font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
-  color:var(--gold);display:block;margin-bottom:3px}
+.hero .kicker{font-family:var(--sans);font-size:clamp(13px,1.5vw,16px);font-weight:700;letter-spacing:.2em;color:var(--bronze)}
 .hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.7rem,7vw,5.4rem);line-height:1.1;
   letter-spacing:.004em;max-width:950px;margin:30px auto 0}
 .hero h1 em{font-style:italic;color:var(--gold)}
@@ -374,12 +374,9 @@ footer .legal{font-size:.8rem;max-width:520px}
   <div class="glow" aria-hidden="true"></div>
   <div class="watermark" aria-hidden="true">WeightLab</div>
   <div class="wrap inner">
-    <span class="kicker" data-t="c.hero.kicker">Nicht noch eine Diät. Stattdessen eine Strategie für <b>deinen</b> Alltag</span>
-    <h1 id="heroline-c" aria-label="Zwei Experten. Ein Ziel: dir zeigen, wie einfach Abnehmen sein kann."></h1>
-    <!-- Hero-Sub: 3 Varianten zur Auswahl (Mani-Entscheid) — danach bleiben nur eine + vnum-Labels entfernen -->
-    <p class="sub" data-t="c.hero.sub"><span class="vnum">Variante 1</span>Ernährung und Sport müssen sich deinem Alltag anpassen, nicht umgekehrt. Genau so begleiten wir dich beim Abnehmen: mitten im Job, mitten in der Familie, mitten im Leben.</p>
-    <p class="sub" style="margin-top:0" data-t="c.hero.sub2"><span class="vnum">Variante 2</span>Wir schauen zuerst auf dein Leben, dann auf deinen Teller: kleine Gewohnheiten statt strenger Regeln, damit das Gewicht runtergeht und unten bleibt. Mitten im Job, mitten in der Familie, mitten im Leben.</p>
-    <p class="sub" style="margin-top:0" data-t="c.hero.sub3"><span class="vnum">Variante 3</span>Kein Programm von der Stange: Abnehmen mit Gewohnheiten, die in deinen Tag passen. Schritt für Schritt, ohne Verzichts-Wahnsinn. Mitten im Job, mitten in der Familie, mitten im Leben.</p>
+    <span class="kicker" data-t="c.hero.kicker">Nicht noch eine strikte Diät. Stattdessen Flexibilität für <b>deinen</b> Alltag</span>
+    <h1 id="heroline-c" aria-label="Ein Ziel: dir zeigen, wie einfach Abnehmen sein kann."></h1>
+    <p class="sub" data-t="c.hero.sub">Ernährung und Sport müssen sich deinem Alltag anpassen, nicht umgekehrt. Genau so begleiten wir dich beim Abnehmen: mitten im Job, mitten in der Familie, mitten im Leben.</p>
     <div class="ctas">
       <a class="btn" href="#/kontakt">Kostenloses Erstgespräch</a><a class="btn ghost" href="#c-coaching" data-scroll="#c-coaching">So arbeiten wir</a>
     </div>
@@ -401,7 +398,7 @@ footer .legal{font-size:.8rem;max-width:520px}
       <div class="grid">
         <div class="ptxt reveal" style="grid-column:1/-1;max-width:820px">
           <p data-t="c.coaching.p1">Bei uns beginnt Coaching nicht mit einem Plan, sondern mit dir: Wie sieht deine Woche wirklich aus? Wann isst du, wann kommst du zur Ruhe? Was ist neben Job und Familie realistisch, was nicht? Erst wenn wir dein Leben verstanden haben, bauen wir darum herum kleine Gewohnheiten ein. Veränderungen, die sich am Anfang fast zu klein anfühlen und nach ein paar Monaten dein Leben verändern, wie du es heute nicht für möglich hältst.</p>
-          <p data-t="c.coaching.p2"><b>Denn Ernährung und Sport müssen sich deinem Alltag anpassen, nicht umgekehrt.</b></p>
+          <p data-t="c.coaching.p2"><b>Was zu deinem Leben passt, hältst du durch. Und was du durchhältst, verändert deinen Körper.</b></p>
           <ul class="arrows" data-t="c.coaching.liste">
             <li>Wöchentliche Gespräche: gemeinsam schauen, was funktioniert hat und was nicht</li>
             <li>Individuelle Strategien, abgestimmt auf deine Ziele und Wünsche</li>
@@ -797,7 +794,7 @@ footer .legal{font-size:.8rem;max-width:520px}
   "band_c": ["Jo-Jo-Effekt","Heißhunger","Keine Zeit","Stress-Essen","Diät-Frust","Träger Stoffwechsel","Fachwissen statt Halbwissen","Wissenschaft statt Mythen","Begleitung statt Diät-Plan"],
   "band_v": ["Ernährung","Training","Gewohnheiten","Mythen aufräumen","Kundenbindung"],
   "headline_c": [
-    {"t":"Zwei"},{"t":"Experten."},{"t":"Ein"},{"t":"Ziel:"},{"t":"dir"},{"t":"zeigen,"},{"t":"wie"},
+    {"t":"Ein"},{"t":"Ziel:"},{"t":"dir"},{"t":"zeigen,"},{"t":"wie"},
     {"t":"einfach","em":1},{"t":"Abnehmen","em":1},{"t":"sein","em":1},{"t":"kann.","em":1}
   ],
   "headline_v": [
