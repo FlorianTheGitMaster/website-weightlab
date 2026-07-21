@@ -140,6 +140,8 @@ a{color:var(--accent)}
 const OWNER="FlorianTheGitMaster", REPO="website-weightlab", BRANCH="main";
 const API=`https://api.github.com/repos/${OWNER}/${REPO}/contents/`;
 const PRESETS=[["Salbei","#6e7f4f"],["Schwarz","#1a1a18"],["Gold","#a5853b"],["Terracotta","#b45a3c"],["Mitternachtsblau","#2e4057"]];
+/* Icon-Auswahl für Karten (Symbol rechts oben) — gezeichnet in den Site-Dateien */
+const ICON_OPTIONS=[["myth","Sprechblase (Mythen)"],["scale","Waage / Diagramm"],["barbell","Hantel"],["habit","Kalender mit Häkchen"],["heart","Herz"],["pulse","Puls-Linie"],["peak","Berge"],["clock","Uhr"],["star","Stern"],["bolt","Blitz"],["users","Menschen"],["loop","Kreis-Pfeil"]];
 let token=localStorage.getItem("wl_token")||"";
 let content=null, contentSha=null, defaults={pre:{texts:{},data:{},imgs:[]},post:{texts:{},data:{},imgs:[]}};
 
@@ -261,11 +263,16 @@ function renderSite(site){
       let v=el.value;
       if(orig&&typeof orig[f]==="number"){const n=parseFloat(v);v=isNaN(n)?0:n}
       content[s].data[a][+i][f]=v};
+    el.onchange=el.oninput;
   });
 }
 function itemHTML(site,arrKey,item,i){
   const fields=Object.keys(item).map(f=>{
     if(typeof item[f]==="object")return "";
+    if(f==="icon"){
+      const opts=`<option value="">– wählen –</option>`+ICON_OPTIONS.map(([v,lbl])=>`<option value="${v}"${item[f]===v?" selected":""}>${lbl}</option>`).join("");
+      return `<label>${f} (Symbol rechts oben)</label><select data-item="${site}|${arrKey}|${i}|${f}">${opts}</select>`;
+    }
     return `<label>${f}</label><input type="text" data-item="${site}|${arrKey}|${i}|${f}" value="${String(item[f]??"").replace(/"/g,"&quot;")}">`;
   }).join("");
   return `<div class="item"><div class="ihead"><span>#${i+1}</span>
