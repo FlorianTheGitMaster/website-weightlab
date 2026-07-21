@@ -6,36 +6,36 @@
 <title>WeightLab – Coaching &amp; Vorträge</title>
 <meta name="description" content="WeightLab: 1:1 Coaching mit Sportexperte und Ernährungsexperte plus praxisnahe Vorträge — Training, Ernährung und Gewohnheiten, die in dein Leben passen.">
 <style>
-/* ═══════════════ DESIGN TOKENS (V1 · Gold Noir) ═══════════════ */
+/* ═══════ DESIGN TOKENS · Weiß & Salbei (Brand-Farbwelt, beschlossen 21.07.2026) ═══════ */
 :root{
-  --bg:#14100d;
-  --bg2:#181310;
-  --panel:#1d1814;
-  --panel2:#221c17;
-  --line:rgba(201,163,92,.22);
-  --line2:rgba(201,163,92,.4);
-  --gold:#c9a35c;
-  --gold2:#e3c07e;
-  --ink:#ece4d6;
-  --muted:#a99e88;
-  --faint:#7e755f;
-  --accent-ink:#14100d;
-  --glow:rgba(201,163,92,.16);
-  --stroke-faint:rgba(201,163,92,.13);
-  --band-stroke:rgba(201,163,92,.6);
-  --band-fill:rgba(236,228,214,.32);
-  --nav-bg:rgba(20,16,13,.82);
-  --nav-bg2:rgba(20,16,13,.97);
-  --ghost-line:rgba(236,228,214,.3);
-  --shadow:rgba(0,0,0,.45);
-  --grain-o:.05;
+  --bg:#ffffff;
+  --bg2:#f7f6f2;
+  --panel:#ffffff;
+  --panel2:#f7f6f2;
+  --line:#e7e6df;
+  --line2:rgba(110,127,79,.45);
+  --gold:#6e7f4f;
+  --gold2:#55663a;
+  --ink:#1c1c19;
+  --muted:#6e6e66;
+  --faint:#a3a399;
+  --accent-ink:#ffffff;
+  --glow:rgba(110,127,79,.12);
+  --stroke-faint:rgba(110,127,79,.15);
+  --band-stroke:rgba(110,127,79,.55);
+  --band-fill:rgba(110,127,79,.1);
+  --nav-bg:rgba(255,255,255,.88);
+  --nav-bg2:rgba(255,255,255,.97);
+  --ghost-line:rgba(28,28,25,.3);
+  --shadow:rgba(30,30,20,.1);
+  --grain-o:.025;
   --serif:Georgia,"Times New Roman",serif;
   --cond:"Arial Narrow","Franklin Gothic Medium",Impact,system-ui,sans-serif;
   --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:58px}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit}
 button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
 input,select,textarea{font:inherit;width:100%}
@@ -95,28 +95,6 @@ section{position:relative;padding:110px 0}
 @media(max-width:920px){
   #nav .links,#nav .cta{display:none}
   #burger{display:flex}
-}
-
-/* ═══════════════ DESIGN-VARIANTEN (Registerkarten) ═══════════════ */
-#variants{position:fixed;left:0;right:0;bottom:0;z-index:90;background:var(--nav-bg);backdrop-filter:blur(14px);
-  -webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line);display:flex;align-items:stretch;gap:0}
-#variants .vlabel{display:flex;align-items:center;gap:8px;padding:0 18px;font-family:var(--cond);font-size:10px;
-  font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--faint);border-right:1px solid var(--line);white-space:nowrap}
-#variants .vtabs{display:flex;overflow-x:auto;scrollbar-width:thin;flex:1}
-#variants button{display:flex;align-items:center;gap:9px;padding:12px 16px;border-right:1px solid var(--line);
-  white-space:nowrap;color:var(--muted);transition:background .25s,color .25s;position:relative;flex:0 0 auto}
-#variants button:hover{color:var(--ink);background:var(--panel)}
-#variants button.on{color:var(--ink);background:var(--panel2)}
-#variants button.on::after{content:"";position:absolute;left:0;right:0;top:-1px;height:2px;background:var(--gold)}
-#variants .dot{width:16px;height:16px;border-radius:50%;border:1px solid rgba(127,127,127,.45);flex:0 0 auto;
-  background:linear-gradient(135deg,var(--d1) 50%,var(--d2) 50%)}
-#variants b{font-family:var(--cond);font-weight:900;font-size:11px;letter-spacing:.08em}
-#variants span.nm{font-size:11.5px;letter-spacing:.05em}
-@media(max-width:760px){
-  #variants .vlabel{display:none}
-  #variants span.nm{display:none}
-  #variants button{padding:12px 13px}
-  body{padding-bottom:46px}
 }
 
 /* ═══════════════ HERO ═══════════════ */
@@ -345,25 +323,7 @@ footer .legal{font-size:.8rem;max-width:520px}
 }
 </script>
 </head>
-<body data-v="10" data-wl-site="pre">
-
-<style>
-/* ═══════════════ DESIGN-VARIANTEN ═══════════════
-   Entscheidungs-Duell (21.07.): nur noch 2 Varianten —
-   V10 „Sand & Stein" (Default) vs. V11 „Weiß & Salbei" (= exakte Farbwelt der Post-Site). */
-body[data-v="10"]{ /* Sand & Stein — zeitlos & dezent */
-  --bg:#f2efe9;--bg2:#eae6dc;--panel:#f9f7f1;--panel2:#efebe2;--ink:#29251d;--muted:#6f6a5d;--faint:#9b9588;
-  --gold:#8f7a52;--gold2:#71603e;--accent-ink:#f8f5ee;
-  --line:rgba(143,122,82,.28);--line2:rgba(143,122,82,.46);--glow:rgba(143,122,82,.13);--stroke-faint:rgba(143,122,82,.17);
-  --band-stroke:rgba(143,122,82,.6);--band-fill:rgba(143,122,82,.12);--nav-bg:rgba(242,239,233,.85);--nav-bg2:rgba(242,239,233,.97);
-  --ghost-line:rgba(41,37,29,.32);--shadow:rgba(110,95,60,.15);--grain-o:.04}
-body[data-v="11"]{ /* Weiß & Salbei — Farbwelt der Post-Site (Logo-Grün) */
-  --bg:#ffffff;--bg2:#f7f6f2;--panel:#ffffff;--panel2:#f7f6f2;--ink:#1c1c19;--muted:#6e6e66;--faint:#a3a399;
-  --gold:#6e7f4f;--gold2:#55663a;--accent-ink:#ffffff;
-  --line:#e7e6df;--line2:rgba(110,127,79,.45);--glow:rgba(110,127,79,.12);--stroke-faint:rgba(110,127,79,.15);
-  --band-stroke:rgba(110,127,79,.55);--band-fill:rgba(110,127,79,.1);--nav-bg:rgba(255,255,255,.88);--nav-bg2:rgba(255,255,255,.97);
-  --ghost-line:rgba(28,28,25,.3);--shadow:rgba(30,30,20,.1);--grain-o:.025}
-</style>
+<body data-wl-site="pre">
 
 <div class="grain" aria-hidden="true"></div>
 <div id="progress" aria-hidden="true"></div>
@@ -391,11 +351,6 @@ body[data-v="11"]{ /* Weiß & Salbei — Farbwelt der Post-Site (Logo-Grün) */
   <a href="#/ueber-uns" style="transition-delay:.24s">Über uns</a>
   <a href="#/kontakt" style="transition-delay:.32s"><em>Kostenloses Erstgespräch</em></a>
   <a href="#/impressum" class="small" style="transition-delay:.4s">Impressum</a>
-</div>
-
-<div id="variants" aria-label="Design-Variante wählen">
-  <span class="vlabel">Design-Variante</span>
-  <div class="vtabs" id="vtabs" role="tablist"></div>
 </div>
 
 <!-- ════════════════════════ SEITE: COACHING ════════════════════════ -->
@@ -858,12 +813,6 @@ const BAND_V     = OV.band_v     || D.band_v;
 const HEADLINE_C = OV.headline_c || D.headline_c;
 const HEADLINE_V = OV.headline_v || D.headline_v;
 
-/* Design-Varianten (Registerkarten unten): das Entscheidungs-Duell. v = data-v im CSS */
-const THEMES = [
-  { v:10, name:"Sand & Stein",  d1:"#f2efe9", d2:"#8f7a52" },
-  { v:11, name:"Weiß & Salbei", d1:"#ffffff", d2:"#6e7f4f" }
-];
-
 /* ═══════════════════════════════════════════════════════════════════
    Ab hier: Logik — muss normalerweise nicht angefasst werden
    ═══════════════════════════════════════════════════════════════════ */
@@ -885,21 +834,6 @@ const ICONS = {
   peak:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 19.5l6.5-11 4.2 7 2.8-4.5 5.5 8.5z"/><path d="M9 8.5l2-3 2 3"/></svg>',
   clock:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.5 2"/></svg>'
 };
-
-/* ── Design-Varianten-Registerkarten ── */
-(function(){
-  const wrap = document.getElementById("vtabs");
-  const cur = +document.body.dataset.v || 10;
-  wrap.innerHTML = THEMES.map((t,i)=>`
-    <button role="tab" data-v="${t.v}" aria-selected="${t.v===cur}" class="${t.v===cur?"on":""}" title="${esc(t.name)}">
-      <i class="dot" style="--d1:${esc(t.d1)};--d2:${esc(t.d2)}"></i><b>${String(i+1).padStart(2,"0")}</b><span class="nm">${esc(t.name)}</span>
-    </button>`).join("");
-  wrap.addEventListener("click",e=>{
-    const b = e.target.closest("button[data-v]"); if(!b) return;
-    document.body.dataset.v = b.dataset.v;
-    wrap.querySelectorAll("button").forEach(x=>{x.classList.toggle("on",x===b);x.setAttribute("aria-selected",x===b)});
-  });
-})();
 
 /* ── Grids & Listen ── */
 document.getElementById("benefitgrid").innerHTML = BENEFITS.map((b,i)=>`
