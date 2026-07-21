@@ -108,6 +108,9 @@ section{position:relative;padding:110px 0}
 .hero .inner{position:relative;z-index:2;text-align:center}
 .kicker{font-family:var(--cond);display:inline-block;font-size:12px;font-weight:700;letter-spacing:.34em;
   text-transform:uppercase;color:var(--gold)}
+.kicker b{color:var(--ink);font-weight:800}
+.vnum{font-family:var(--cond);font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold);display:block;margin-bottom:3px}
 .hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.7rem,7vw,5.4rem);line-height:1.1;
   letter-spacing:.004em;max-width:950px;margin:30px auto 0}
 .hero h1 em{font-style:italic;color:var(--gold)}
@@ -360,9 +363,12 @@ footer .legal{font-size:.8rem;max-width:520px}
   <div class="glow" aria-hidden="true"></div>
   <div class="watermark" aria-hidden="true">WeightLab</div>
   <div class="wrap inner">
-    <span class="kicker" data-t="c.hero.kicker">1:1 Coaching · Ernährung &amp; Training</span>
-    <h1 id="heroline-c" aria-label="Zwei Experten. Ein Ziel: deine stärkste Form."></h1>
-    <p class="sub" data-t="c.hero.sub">Sportexperte und Ernährungsexperte in einem Coaching: Training, Ernährung und Gewohnheiten, die in dein Leben passen — mitten im Job, mitten in der Familie, mitten im Leben.</p>
+    <span class="kicker" data-t="c.hero.kicker">Nicht noch eine Diät — sondern eine Strategie für <b>deinen</b> Alltag</span>
+    <h1 id="heroline-c" aria-label="Zwei Experten. Ein Ziel: dir zeigen, wie einfach Abnehmen sein kann."></h1>
+    <!-- Hero-Sub: 3 Varianten zur Auswahl (Mani-Entscheid) — danach bleiben nur eine + vnum-Labels entfernen -->
+    <p class="sub" data-t="c.hero.sub"><span class="vnum">Variante 1</span>Ernährung und Sport müssen sich deinem Alltag anpassen — nicht umgekehrt. Genau so begleiten wir dich beim Abnehmen: mitten im Job, mitten in der Familie, mitten im Leben.</p>
+    <p class="sub" style="margin-top:0" data-t="c.hero.sub2"><span class="vnum">Variante 2</span>Wir schauen zuerst auf dein Leben, dann auf deinen Teller: kleine Gewohnheiten statt strenger Regeln — damit das Gewicht runtergeht und unten bleibt. Mitten im Job, mitten in der Familie, mitten im Leben.</p>
+    <p class="sub" style="margin-top:0" data-t="c.hero.sub3"><span class="vnum">Variante 3</span>Kein Programm von der Stange: Abnehmen mit Gewohnheiten, die in deinen Tag passen — Schritt für Schritt, ohne Verzichts-Wahnsinn. Mitten im Job, mitten in der Familie, mitten im Leben.</p>
     <div class="ctas">
       <a class="btn" href="#/kontakt">Kostenloses Erstgespräch</a><a class="btn ghost" href="#c-coaching" data-scroll="#c-coaching">So arbeiten wir</a>
     </div>
@@ -378,18 +384,18 @@ footer .legal{font-size:.8rem;max-width:520px}
   <div class="wrap">
     <div class="sechead reveal">
       <span class="kickline"><span class="kicker" data-t="c.coaching.kicker">Was gutes Coaching ausmacht</span></span>
-      <h2 data-t="c.coaching.h2">Ein Plan ist schnell geschrieben. <em>Veränderung</em> entsteht durch Begleitung.</h2>
+      <h2 data-t="c.coaching.h2">Dein Leben ist kompliziert genug. <em>Abnehmen muss es nicht sein.</em></h2>
     </div>
     <div class="profile">
       <div class="grid">
         <div class="ptxt reveal" style="grid-column:1/-1;max-width:820px">
-          <p data-t="c.coaching.p1">Gutes Coaching heißt für uns: Du bekommst nicht einen Trainer, sondern <b>zwei Experten, die sich ergänzen</b>. Manuel, unser Sportexperte, baut dein Training auf — technisch sauber, progressiv und auf deinen Körper abgestimmt. Florian, unser Ernährungsexperte, entwickelt eine Ernährung, die satt macht, in deinen Alltag passt und trotzdem Ergebnisse liefert.</p>
-          <p data-t="c.coaching.p2">Der Unterschied zu Standard-Plänen aus dem Internet: Wir arbeiten an den <b>Gewohnheiten dahinter</b>. Regelmäßige Check-ins, Anpassungen, ehrliches Feedback — damit aus zwei guten Wochen ein neuer Lebensstil wird und nicht der nächste Anlauf, der im Alltag untergeht.</p>
+          <p data-t="c.coaching.p1">Bei uns beginnt Coaching nicht mit einem Plan, sondern mit dir: Wie sieht deine Woche wirklich aus? Wann isst du, wann kommst du zur Ruhe — und was ist neben Job und Familie realistisch, was nicht? Erst wenn wir dein Leben verstanden haben, bauen wir darum herum kleine Gewohnheiten ein. Veränderungen, die sich am Anfang fast zu klein anfühlen — und nach ein paar Monaten dein Leben verändern, wie du es heute nicht für möglich hältst.</p>
+          <p data-t="c.coaching.p2"><b>Denn Ernährung und Sport müssen sich deinem Alltag anpassen — nicht umgekehrt.</b></p>
           <ul class="arrows" data-t="c.coaching.liste">
-            <li>1:1-Betreuung durch beide Experten — Training und Ernährung aus einer Hand</li>
-            <li>Pläne, die zu deinem Kalender passen — nicht umgekehrt</li>
-            <li>Regelmäßige Check-ins mit ehrlichem Feedback und Anpassungen</li>
-            <li>Erreichbar, wenn es hakt — genau dann zählt Coaching</li>
+            <li>Wöchentliche Gespräche — gemeinsam schauen, was funktioniert hat und was nicht</li>
+            <li>Individuelle Strategien, abgestimmt auf deine Ziele und Wünsche</li>
+            <li>Immer erreichbar, auch zu Weihnachten — bei Unsicherheiten, Fragen oder wenn der Heißhunger gerade laut ist und du einfach kurz reden willst</li>
+            <li>Kleine Schritte statt großer Umbrüche — damit du nie wieder von vorn anfangen musst</li>
           </ul>
         </div>
       </div>
@@ -784,8 +790,8 @@ footer .legal{font-size:.8rem;max-width:520px}
   "band_c": ["Gewohnheiten","Krafttraining","Ernährung","Gesundheit","Fit im Alter","Energie im Alltag"],
   "band_v": ["Ernährung","Training","Gewohnheiten","Mythen aufräumen","Kundenbindung"],
   "headline_c": [
-    {"t":"Zwei"},{"t":"Experten."},{"t":"Ein"},{"t":"Ziel:"},
-    {"t":"deine","em":1},{"t":"stärkste","em":1},{"t":"Form.","em":1}
+    {"t":"Zwei"},{"t":"Experten."},{"t":"Ein"},{"t":"Ziel:"},{"t":"dir"},{"t":"zeigen,"},{"t":"wie"},
+    {"t":"einfach","em":1},{"t":"Abnehmen","em":1},{"t":"sein","em":1},{"t":"kann.","em":1}
   ],
   "headline_v": [
     {"t":"Vorträge,"},{"t":"die"},{"t":"aus"},{"t":"Mitgliedern"},
