@@ -3,12 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WeightLab – Coaching &amp; Vorträge</title>
-<meta name="description" content="WeightLab: 1:1 Coaching mit Sport- und Ernährungsexperte plus praxisnahe Vorträge in Fitnessstudios — Training, Ernährung und Gewohnheiten, die bleiben.">
+<title>WeightLab – Vorträge &amp; Coaching</title>
+<meta name="description" content="WeightLab: Evidenzbasierte Vorträge für Fitnessstudios und 1:1 Coaching für Training, Ernährung und Alltagsgewohnheiten.">
 <style>
-/* ═══════════ POST-SITE · Editorial Weiß + austauschbarer Akzent ═══════════
-   --accent wird aus content.json (accent.post) gesetzt. Muss mit Salbei
-   (#6e7f4f) genauso funktionieren wie mit Schwarz (#1a1a18) o. a. */
+/* ═══════════ POST-SITE v2 · Editorial Weiß + austauschbarer Akzent · foto-getragen ═══════════
+   --accent kommt aus content.json (accent.post). Funktioniert mit Salbei wie mit Schwarz. */
 :root{
   --accent:#6e7f4f;
   --paper:#ffffff;
@@ -28,33 +27,32 @@ img{max-width:100%;display:block}
 button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
 input,select,textarea{font:inherit;width:100%}
 .wrap{max-width:1160px;margin:0 auto;padding:0 28px}
-section{padding:110px 0}
+section{padding:100px 0}
 ::selection{background:var(--accent);color:#fff}
 
 .micro{font-size:11px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--accent)}
 h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.15}
-h2{font-size:clamp(1.9rem,4vw,2.9rem);letter-spacing:.002em}
-.sub{color:var(--muted);max-width:620px}
+h2{font-size:clamp(1.9rem,4vw,2.8rem)}
+.sub{color:var(--muted);max-width:600px}
 
 .btn{display:inline-block;background:var(--accent);color:#fff;font-weight:600;font-size:13.5px;letter-spacing:.1em;
-  text-transform:uppercase;padding:17px 36px;text-decoration:none;transition:opacity .25s,transform .25s}
+  text-transform:uppercase;padding:16px 34px;text-decoration:none;transition:opacity .25s,transform .25s}
 .btn:hover{opacity:.88;transform:translateY(-1px)}
 .btn.line{background:transparent;color:var(--ink);border:1px solid var(--line);margin-left:12px}
 .btn.line:hover{border-color:var(--accent);color:var(--accent);opacity:1}
 
-/* Reveal */
 .rv{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
 .rv.in{opacity:1;transform:none}
-.rv[data-d="1"]{transition-delay:.12s}.rv[data-d="2"]{transition-delay:.24s}.rv[data-d="3"]{transition-delay:.36s}
+.rv[data-d="1"]{transition-delay:.1s}.rv[data-d="2"]{transition-delay:.2s}.rv[data-d="3"]{transition-delay:.3s}
 
 /* ─── Nav ─── */
 #nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);
   border-bottom:1px solid transparent;transition:border-color .3s}
 #nav.sc{border-bottom-color:var(--line)}
-#nav .bar{display:flex;align-items:center;justify-content:space-between;height:74px}
-#nav .logo{font-family:var(--serif);font-size:20px;text-decoration:none;letter-spacing:.02em}
+#nav .bar{display:flex;align-items:center;justify-content:space-between;height:72px}
+#nav .logo{font-family:var(--serif);font-size:20px;text-decoration:none}
 #nav .logo b{font-weight:400;color:var(--accent)}
-#nav .links{display:flex;gap:32px;list-style:none;align-items:center}
+#nav .links{display:flex;gap:30px;list-style:none;align-items:center}
 #nav .links a{font-size:13px;font-weight:600;letter-spacing:.06em;text-decoration:none;color:var(--muted);transition:color .2s}
 #nav .links a:hover{color:var(--ink)}
 #nav .cta{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--accent);
@@ -62,123 +60,146 @@ h2{font-size:clamp(1.9rem,4vw,2.9rem);letter-spacing:.002em}
 #nav .cta:hover{opacity:.85}
 #menu-btn{display:none;flex-direction:column;gap:5px;padding:8px}
 #menu-btn span{width:24px;height:2px;background:var(--ink);display:block}
-@media(max-width:900px){
-  #nav .links,#nav .cta{display:none}
-  #menu-btn{display:flex}
-}
-#mnav{position:fixed;inset:0;z-index:99;background:#fff;display:none;flex-direction:column;justify-content:center;
-  align-items:center;gap:10px;padding-top:60px}
+@media(max-width:900px){#nav .links,#nav .cta{display:none}#menu-btn{display:flex}}
+#mnav{position:fixed;inset:0;z-index:99;background:#fff;display:none;flex-direction:column;justify-content:center;align-items:center;gap:8px}
 #mnav.open{display:flex}
-#mnav a{font-family:var(--serif);font-size:1.9rem;text-decoration:none;padding:8px}
+#mnav a{font-family:var(--serif);font-size:1.8rem;text-decoration:none;padding:8px}
 
-/* ─── Foto-Slots (Platzhalter bis echte Bilder da sind) ─── */
+/* ─── Foto-Slots ─── */
 .ph{background:var(--soft);position:relative;overflow:hidden;background-size:cover;background-position:center}
 .ph::after{content:attr(data-label);position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-  text-align:center;padding:24px;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--faint)}
+  text-align:center;padding:20px;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint)}
 .ph.has-img::after{display:none}
-.ph .cam{position:absolute;top:50%;left:50%;transform:translate(-50%,-140%);color:var(--faint)}
+.ph .cam{position:absolute;top:50%;left:50%;transform:translate(-50%,-150%);color:var(--faint)}
 .ph.has-img .cam{display:none}
 
-/* ─── Hero ─── */
-#hero{padding:190px 0 90px}
-#hero .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:70px;align-items:center}
-@media(max-width:900px){#hero .grid{grid-template-columns:1fr;gap:44px}}
-#hero h1{font-size:clamp(2.6rem,5.6vw,4.3rem)}
+/* ─── Hero (Vorträge) ─── */
+#hero{padding:180px 0 70px}
+#hero .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
+@media(max-width:900px){#hero .grid{grid-template-columns:1fr;gap:40px}}
+#hero h1{font-size:clamp(2.5rem,5.4vw,4.1rem)}
 #hero h1 em{font-style:italic;color:var(--accent)}
-#hero .sub{margin:26px 0 36px;font-size:1.06rem}
+#hero .sub{margin:24px 0 34px;font-size:1.05rem}
 #hero .shot{aspect-ratio:4/5}
-#hero .facts{display:flex;gap:34px;margin-top:46px;padding-top:26px;border-top:1px solid var(--line);flex-wrap:wrap}
-#hero .facts div b{font-family:var(--serif);font-size:1.5rem;display:block;color:var(--accent)}
-#hero .facts div span{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+#hero .facts{display:flex;gap:32px;margin-top:42px;padding-top:24px;border-top:1px solid var(--line);flex-wrap:wrap}
+#hero .facts div b{font-family:var(--serif);font-size:1.45rem;display:block;color:var(--accent)}
+#hero .facts div span{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
 
-/* ─── Statement ─── */
-#statement{background:var(--soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line);text-align:center}
-#statement p.big{font-family:var(--serif);font-size:clamp(1.5rem,3.2vw,2.2rem);line-height:1.5;max-width:840px;margin:0 auto;font-style:italic}
-#statement p.big em{color:var(--accent)}
+/* ─── Foto-Mosaik ─── */
+#mosaik{padding:0 0 20px}
+#mosaik .row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+#mosaik .ph{aspect-ratio:1/1}
+@media(max-width:700px){#mosaik .row{grid-template-columns:repeat(2,1fr)}}
 
-/* ─── Leistungen ─── */
-.head{max-width:660px;margin-bottom:60px}
+/* ─── Section-Head ─── */
+.head{max-width:640px;margin-bottom:54px}
 .head.c{margin-left:auto;margin-right:auto;text-align:center}
 .head h2{margin-top:14px}
-.head p{color:var(--muted);margin-top:14px}
-#leistungen .two{display:grid;grid-template-columns:1fr 1fr;gap:26px}
-@media(max-width:860px){#leistungen .two{grid-template-columns:1fr}}
-.lcard{border:1px solid var(--line);padding:46px 40px;display:flex;flex-direction:column;transition:border-color .3s,box-shadow .3s}
-.lcard:hover{border-color:var(--accent);box-shadow:0 22px 50px rgba(0,0,0,.06)}
-.lcard h3{font-size:1.6rem;margin:14px 0 12px}
-.lcard p{color:var(--muted);flex:1}
-.lcard ul{list-style:none;margin:20px 0 28px}
-.lcard li{padding:9px 0;border-bottom:1px solid var(--line);font-size:.95rem;display:flex;gap:12px}
-.lcard li::before{content:"—";color:var(--accent)}
-.lcard .btn{align-self:flex-start}
+.head p{color:var(--muted);margin-top:12px}
 
-/* ─── Vorträge-Liste ─── */
-#talks{background:var(--soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-#talks .row{display:grid;grid-template-columns:64px 1fr auto;gap:26px;align-items:baseline;padding:26px 8px;
-  border-bottom:1px solid var(--line);transition:background .25s}
-#talks .row:hover{background:#fff}
-#talks .num{font-family:var(--serif);font-style:italic;font-size:1.3rem;color:var(--accent)}
-#talks .row h3{font-size:1.3rem;margin-bottom:6px}
-#talks .row p{color:var(--muted);font-size:.95rem;max-width:640px}
-#talks .dur{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);white-space:nowrap}
-@media(max-width:700px){#talks .row{grid-template-columns:44px 1fr}.dur{display:none}}
+/* ─── Benefits mit Foto ─── */
+#warum{background:var(--soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+#warum .grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media(max-width:820px){#warum .grid{grid-template-columns:1fr}}
+.bcard{background:#fff;border:1px solid var(--line);transition:box-shadow .3s}
+.bcard:hover{box-shadow:0 20px 44px rgba(0,0,0,.07)}
+.bcard .ph{aspect-ratio:16/9}
+.bcard .tx{padding:24px 26px 28px}
+.bcard h3{font-size:1.25rem;margin-bottom:8px}
+.bcard p{color:var(--muted);font-size:.95rem}
+
+/* ─── Themen: Text links · Bild rechts ─── */
+#themen .trow{display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:center;padding:44px 0;border-top:1px solid var(--line)}
+#themen .trow:last-of-type{border-bottom:1px solid var(--line)}
+@media(max-width:820px){#themen .trow{grid-template-columns:1fr;gap:22px}#themen .trow .ph{order:-1}}
+#themen .trow h3{font-family:var(--serif);font-size:1.7rem;margin:10px 0 10px}
+#themen .trow p{color:var(--muted);max-width:480px}
+#themen .trow .dur{display:inline-block;margin-top:14px;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
+#themen .trow .ph{aspect-ratio:16/10}
+#themen .note{color:var(--faint);font-style:italic;font-family:var(--serif);margin-top:26px}
+
+/* ─── Ablauf kompakt ─── */
+#ablauf{background:var(--soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+#ablauf .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+@media(max-width:860px){#ablauf .steps{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){#ablauf .steps{grid-template-columns:1fr}}
+#ablauf .step b{font-family:var(--serif);font-weight:400;font-size:1.15rem;display:block;margin:10px 0 6px}
+#ablauf .step .rn{font-family:var(--serif);font-style:italic;font-size:1.3rem;color:var(--accent)}
+#ablauf .step p{color:var(--muted);font-size:.92rem}
+#ablauf blockquote{margin-top:64px;font-family:var(--serif);font-style:italic;font-size:clamp(1.25rem,2.6vw,1.7rem);
+  line-height:1.6;max-width:840px;padding-left:24px;border-left:2px solid var(--accent)}
+#ablauf blockquote em{color:var(--accent)}
+
+/* ─── Coaching-Block ─── */
+#coaching .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
+@media(max-width:900px){#coaching .grid{grid-template-columns:1fr;gap:36px}}
+#coaching .shot{aspect-ratio:4/5}
+#coaching h2 em{font-style:italic;color:var(--accent)}
+#coaching .motto{font-family:var(--serif);font-style:italic;margin:20px 0 26px;font-size:1.08rem}
+#coaching .points{list-style:none;margin:0 0 30px}
+#coaching .points li{padding:10px 0;border-bottom:1px solid var(--line);font-size:.96rem;display:flex;gap:12px}
+#coaching .points li::before{content:"→";color:var(--accent)}
+
+/* ─── Ergebnisse ─── */
+#ergebnisse .grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:64px;align-items:center}
+@media(max-width:900px){#ergebnisse .grid{grid-template-columns:1fr;gap:36px}}
+#ergebnisse .shot{aspect-ratio:16/12}
+#ergebnisse ul{list-style:none}
+#ergebnisse li{padding:11px 0;border-bottom:1px solid var(--line);display:flex;gap:12px;font-size:.97rem}
+#ergebnisse li::before{content:"→";color:var(--accent)}
+#ergebnisse .promise{margin-top:22px;font-family:var(--serif);font-style:italic;color:var(--faint)}
 
 /* ─── Team ─── */
-#team .grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
-@media(max-width:860px){#team .grid{grid-template-columns:1fr}}
-.person .shot{aspect-ratio:3/4;margin-bottom:26px}
-.person h3{font-size:1.7rem;margin:10px 0 4px}
-.person .role{color:var(--accent);font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase}
-.person p{color:var(--muted);margin-top:14px}
+#team{background:var(--soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+#team .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:820px){#team .grid{grid-template-columns:1fr}}
+.person{background:#fff;border:1px solid var(--line)}
+.person .ph{aspect-ratio:3/4}
+.person .tx{padding:24px 26px 30px}
+.person .role{color:var(--accent);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase}
+.person h3{font-size:1.5rem;margin:6px 0 8px}
+.person p{color:var(--muted);font-size:.95rem}
+#team .duoline{text-align:center;margin-top:44px;font-family:var(--serif);font-style:italic;font-size:1.15rem;color:var(--muted)}
 
-/* ─── Case Study ─── */
-#case .grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
-@media(max-width:900px){#case .grid{grid-template-columns:1fr;gap:40px}}
-#case .shot{aspect-ratio:16/10}
-#case blockquote{font-family:var(--serif);font-style:italic;font-size:1.35rem;line-height:1.6;margin:24px 0 14px;
-  padding-left:22px;border-left:2px solid var(--accent)}
-#case cite{font-style:normal;font-size:.9rem;color:var(--faint)}
-
-/* ─── Rezensionen ─── */
-#stimmen{background:var(--soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-#stimmen .three{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+/* ─── Stimmen ─── */
+#stimmen .three{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 @media(max-width:900px){#stimmen .three{grid-template-columns:1fr}}
-.voice{background:#fff;border:1px solid var(--line);padding:34px 30px}
+.voice{background:#fff;border:1px solid var(--line);padding:32px 28px}
 .voice p{font-family:var(--serif);font-style:italic;line-height:1.7}
-.voice b{display:block;margin-top:18px;font-size:.85rem;letter-spacing:.08em;color:var(--muted);font-weight:600}
+.voice b{display:block;margin-top:16px;font-size:.85rem;letter-spacing:.08em;color:var(--muted);font-weight:600}
 .voice .stars{color:var(--accent);letter-spacing:.2em;margin-bottom:6px}
 .voice .vtag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--accent);border:1px solid var(--line);padding:3px 10px;margin-bottom:14px}
+  color:var(--accent);border:1px solid var(--line);padding:3px 10px;margin-bottom:12px}
 
 /* ─── CTA-Band ─── */
 #cta{background:var(--accent);color:#fff;text-align:center}
 #cta h2{color:#fff}
-#cta p{color:rgba(255,255,255,.82);max-width:560px;margin:18px auto 34px}
+#cta p{color:rgba(255,255,255,.82);max-width:540px;margin:16px auto 32px}
 #cta .btn{background:#fff;color:var(--ink)}
+#cta .btn.line{border-color:rgba(255,255,255,.5);color:#fff;background:transparent}
 #cta .micro{color:rgba(255,255,255,.75)}
 
 /* ─── Kontakt ─── */
-#kontakt .panel{display:grid;grid-template-columns:1fr 1.1fr;gap:60px;border:1px solid var(--line);padding:56px}
-@media(max-width:880px){#kontakt .panel{grid-template-columns:1fr;padding:30px}}
-#kontakt .direct{line-height:2.1;font-size:.96rem;margin-top:22px}
+#kontakt .panel{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;border:1px solid var(--line);padding:52px}
+@media(max-width:880px){#kontakt .panel{grid-template-columns:1fr;padding:28px}}
+#kontakt .direct{line-height:2.1;font-size:.95rem;margin-top:20px}
 #kontakt .direct b{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);display:inline-block;width:100px}
-label{display:block;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin:18px 0 8px}
+label{display:block;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin:16px 0 8px}
 input,select,textarea{background:#fff;border:1px solid var(--line);color:var(--ink);padding:13px 15px;border-radius:0;transition:border-color .25s}
 input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent)}
-form .btn{width:100%;margin-top:26px}
-#formhint{margin-top:14px;font-size:.85rem;color:var(--faint);text-align:center;display:none}
+form .btn{width:100%;margin-top:24px}
+#formhint{margin-top:12px;font-size:.85rem;color:var(--faint);text-align:center;display:none}
 
 /* ─── Impressum & Footer ─── */
 #impressum{border-top:1px solid var(--line)}
-.impblock{border:1px solid var(--line);padding:30px 32px;margin-bottom:16px;max-width:840px}
-.impblock h3{font-size:1.2rem;margin-bottom:10px}
-.impblock p{color:var(--muted);font-size:.94rem}
+.impblock{border:1px solid var(--line);padding:28px 30px;margin-bottom:14px;max-width:840px}
+.impblock h3{font-size:1.15rem;margin-bottom:8px}
+.impblock p{color:var(--muted);font-size:.93rem}
 .impblock a{color:var(--accent)}
-footer{border-top:1px solid var(--line);padding:34px 0;background:var(--soft)}
+footer{border-top:1px solid var(--line);padding:32px 0;background:var(--soft)}
 footer .row{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:var(--faint);font-size:.85rem}
 footer a{text-decoration:none}
 footer a:hover{color:var(--accent)}
-footer .legal{font-size:.8rem;max-width:520px}
 
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation:none !important;transition:none !important}
@@ -193,12 +214,12 @@ footer .legal{font-size:.8rem;max-width:520px}
   "name": "WeightLab",
   "url": "https://weightlab.at/",
   "email": "office@weightlab.at",
-  "description": "1:1 Coaching für Training, Ernährung und Gewohnheiten sowie praxisnahe Vorträge in Fitnessstudios.",
+  "description": "Evidenzbasierte Vorträge für Fitnessstudios und 1:1 Coaching für Training, Ernährung und Alltagsgewohnheiten.",
   "areaServed": [
     { "@type": "City", "name": "Innsbruck" },
     { "@type": "City", "name": "Wien" }
   ],
-  "knowsAbout": ["Ernährung", "Krafttraining", "Abnehmen", "Gewohnheiten"],
+  "knowsAbout": ["Ernährung", "Training", "Abnehmen", "Gewohnheiten"],
   "founder": [
     { "@type": "Person", "name": "Florian" },
     { "@type": "Person", "name": "Manuel" }
@@ -212,19 +233,20 @@ footer .legal{font-size:.8rem;max-width:520px}
   <div class="wrap bar">
     <a class="logo" href="#hero">Weight<b>Lab</b></a>
     <ul class="links">
-      <li><a href="#leistungen">Coaching</a></li>
-      <li><a href="#talks">Vorträge</a></li>
+      <li><a href="#warum">Vorträge</a></li>
+      <li><a href="#themen">Themen</a></li>
+      <li><a href="#coaching">Coaching</a></li>
       <li><a href="#team">Über uns</a></li>
       <li><a href="#stimmen">Stimmen</a></li>
-      <li><a href="#kontakt">Kontakt</a></li>
     </ul>
-    <a class="cta" href="#kontakt" data-t="nav.cta">Erstgespräch buchen</a>
+    <a class="cta" href="#kontakt" data-t="nav.cta">Jetzt anfragen</a>
     <button id="menu-btn" aria-label="Menü"><span></span><span></span><span></span></button>
   </div>
 </nav>
 <div id="mnav">
-  <a href="#leistungen">Coaching</a>
-  <a href="#talks">Vorträge</a>
+  <a href="#warum">Vorträge</a>
+  <a href="#themen">Themen</a>
+  <a href="#coaching">Coaching</a>
   <a href="#team">Über uns</a>
   <a href="#stimmen">Stimmen</a>
   <a href="#kontakt">Kontakt</a>
@@ -234,73 +256,167 @@ footer .legal{font-size:.8rem;max-width:520px}
 <header id="hero">
   <div class="wrap grid">
     <div>
-      <span class="micro" data-t="hero.kicker">Coaching &amp; Vorträge · Training + Ernährung</span>
-      <h1 data-t="hero.h1">Zwei Experten.<br>Ein Ziel: <em>deine stärkste Form.</em></h1>
-      <p class="sub" data-t="hero.sub">Sportexperte und Ernährungsexperte in einem Team: Wir bauen Training, Ernährung und Gewohnheiten, die in dein echtes Leben passen — und bleiben.</p>
+      <span class="micro" data-t="hero.kicker">Vorträge für Fitnessstudios, die Mitglieder begeistern und binden</span>
+      <h1 data-t="hero.h1">Vorträge, nach denen <em>niemand mehr kündigen will.</em></h1>
+      <p class="sub" data-t="hero.sub">Evidenzbasierte Vorträge über Ernährung, Training und Lifestyle. Deine Mitglieder gehen raus mit dem Gefühl, sofort loslegen zu müssen. Dein Studio wird zum Ort, der Ergebnisse liefert.</p>
       <div>
-        <a class="btn" href="#kontakt" data-t="hero.btn1">Kostenloses Erstgespräch</a><a class="btn line" href="#leistungen" data-t="hero.btn2">So arbeiten wir</a>
+        <a class="btn" href="#kontakt" data-t="hero.btn1">Vortrag anfragen</a><a class="btn line" href="#coaching" data-t="hero.btn2">Coaching entdecken</a>
       </div>
       <div class="facts">
-        <div><b data-t="hero.fact1b">2</b><span data-t="hero.fact1">Experten</span></div>
-        <div><b data-t="hero.fact2b">1:1</b><span data-t="hero.fact2">Betreuung</span></div>
+        <div><b data-t="hero.fact1b">45–60</b><span data-t="hero.fact1">Minuten + Q&amp;A</span></div>
+        <div><b data-t="hero.fact2b">4</b><span data-t="hero.fact2">Themen zur Wahl</span></div>
         <div><b data-t="hero.fact3b">48 h</b><span data-t="hero.fact3">Antwortzeit</span></div>
       </div>
     </div>
-    <div class="shot ph rv" data-img="hero" data-label="Foto folgt — wird beim ersten Vortrag aufgenommen">
+    <div class="shot ph rv" data-img="hero" data-label="Foto: wir auf der Bühne">
       <svg class="cam" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 8h3l2-2.5h6L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.4"/></svg>
     </div>
   </div>
 </header>
 
-<section id="statement">
-  <div class="wrap rv">
-    <p class="big" data-t="statement.text">Ein Plan ist schnell geschrieben. <em>Veränderung</em> entsteht durch Begleitung — durch zwei Spezialisten, die sich täglich abstimmen, statt einem Generalisten, der alles ein bisschen kann.</p>
+<div id="mosaik">
+  <div class="wrap">
+    <div class="row">
+      <div class="ph rv" data-img="mosaik1" data-label="Impression: Publikum"></div>
+      <div class="ph rv" data-d="1" data-img="mosaik2" data-label="Impression: Q&amp;A"></div>
+      <div class="ph rv" data-d="2" data-img="mosaik3" data-label="Impression: Meet &amp; Greet"></div>
+      <div class="ph rv" data-d="3" data-img="mosaik4" data-label="Impression: Studio"></div>
+    </div>
   </div>
-</section>
+</div>
 
-<section id="leistungen">
+<section id="warum">
   <div class="wrap">
     <div class="head c rv">
-      <span class="micro" data-t="l.kicker">Was wir anbieten</span>
-      <h2 data-t="l.h2">Zwei Wege zu uns</h2>
+      <span class="micro" data-t="w.kicker">Warum ein Vortrag?</span>
+      <h2 data-t="w.h2">Relevanz ist die beste Kundenbindung</h2>
+      <p data-t="w.p">Mitglieder kündigen nicht, weil das Studio schlecht ist, sondern weil es ihnen egal wird. Ein Vortrag macht dein Studio wieder zur Priorität.</p>
     </div>
-    <div class="two">
-      <div class="lcard rv">
-        <span class="micro" data-t="l.c1.kicker">Für dich · 1:1</span>
-        <h3 data-t="l.c1.h3">Coaching</h3>
-        <p data-t="l.c1.p">Training vom Sportexperten, Ernährung vom Ernährungsexperten — ein Plan, der zu deinem Kalender passt, mit regelmäßigen Check-ins und ehrlichem Feedback.</p>
-        <ul data-t="l.c1.liste">
-          <li>Training &amp; Ernährung aus einer Hand</li>
-          <li>Gewohnheiten statt Crash-Diäten</li>
-          <li>Wöchentliche Check-ins &amp; Anpassungen</li>
-          <li>Erreichbar, wenn es hakt</li>
-        </ul>
-        <a class="btn" href="#kontakt" data-t="l.c1.btn">Erstgespräch anfragen</a>
+    <div class="grid">
+      <div class="bcard rv">
+        <div class="ph" data-img="benefit1" data-label="Foto: volle Reihen"></div>
+        <div class="tx"><h3 data-t="w.c1.h3">Bindung statt Fluktuation</h3><p data-t="w.c1.p">Mitglieder, die ihre Fortschritte verstehen, bleiben. Wissen schafft Ergebnisse, und Ergebnisse schaffen Kundenbindung.</p></div>
       </div>
-      <div class="lcard rv" data-d="1">
-        <span class="micro" data-t="l.c2.kicker">Für dein Studio · B2B</span>
-        <h3 data-t="l.c2.h3">Vorträge</h3>
-        <p data-t="l.c2.p">Praxisnahe Vortragsabende direkt in deinem Studio: Deine Mitglieder bekommen Wissen, das wirkt — dein Studio wird zum Ort, der Ergebnisse liefert. Relevanz ist die beste Kundenbindung.</p>
-        <ul data-t="l.c2.liste">
-          <li>45–60 min + offene Fragerunde</li>
-          <li>Fertiges Format, null Aufwand fürs Team</li>
-          <li>Ankündigungs-Vorlagen inklusive</li>
-          <li>Themen anpassbar auf dein Studio</li>
-        </ul>
-        <a class="btn" href="#kontakt" data-t="l.c2.btn">Vortrag anfragen</a>
+      <div class="bcard rv" data-d="1">
+        <div class="ph" data-img="benefit2" data-label="Foto: Gäste am Empfang"></div>
+        <div class="tx"><h3 data-t="w.c2.h3">Neue Mitglieder am selben Abend</h3><p data-t="w.c2.p">Öffne den Abend auch für Gäste ohne Mitgliedschaft: Sie erleben dein Studio von der besten Seite.</p></div>
+      </div>
+      <div class="bcard rv">
+        <div class="ph" data-img="benefit3" data-label="Foto: Vortragsmoment"></div>
+        <div class="tx"><h3 data-t="w.c3.h3">Mehrwert fürs Abo</h3><p data-t="w.c3.p">Ein Vortragsabend ist ein spürbares Extra zur Mitgliedschaft: ein Erlebnis, das deine Mitglieder so nur bei dir bekommen.</p></div>
+      </div>
+      <div class="bcard rv" data-d="1">
+        <div class="ph" data-img="benefit4" data-label="Foto: Ankündigungs-Material"></div>
+        <div class="tx"><h3 data-t="w.c4.h3">Null Aufwand für dein Team</h3><p data-t="w.c4.p">Wir liefern alles: Vortrag, Fragerunde, fertige Grafiken und Texte für die Ankündigung. Auf eure Wünsche gehen wir gerne ein.</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="talks">
+<section id="themen">
   <div class="wrap">
-    <div class="head rv">
+    <div class="head c rv">
       <span class="micro" data-t="t.kicker">Die Vorträge</span>
       <h2 data-t="t.h2">Dein Studio wählt das Thema</h2>
-      <p data-t="t.p">Vier Formate — jedes zugeschnitten auf eine andere Zielgruppe. Eigene Themenwünsche? Genau dafür ist das erste Gespräch da.</p>
+      <p data-t="t.p">Jeder Vortrag zugeschnitten auf eine andere Zielgruppe in deinem Studio. Und alle anpassbar.</p>
     </div>
-    <div id="talklist"></div>
+
+    <div class="trow rv">
+      <div>
+        <span class="micro" data-t="t.r1.tag">Ernährung</span>
+        <h3 data-t="t.r1.h3">Ernährungsmythen im Gym</h3>
+        <p data-t="t.r1.p">Detox-Kuren, „abends keine Kohlenhydrate", das anabole Fenster: Wir räumen auf mit den Mythen, die deine Mitglieder Fortschritt kosten.</p>
+        <span class="dur" data-t="t.r1.dur">45–60 min + Q&amp;A</span>
+      </div>
+      <div class="ph" data-img="thema1" data-label="Foto: Vortrag Ernährungsmythen"></div>
+    </div>
+
+    <div class="trow rv">
+      <div>
+        <span class="micro" data-t="t.r2.tag">Abnehmen</span>
+        <h3 data-t="t.r2.h3">Abnehmen, das hält</h3>
+        <p data-t="t.r2.p">Warum Crash-Diäten scheitern und was stattdessen funktioniert. Der Vortrag für die größte Zielgruppe im Studio.</p>
+        <span class="dur" data-t="t.r2.dur">45–60 min + Q&amp;A</span>
+      </div>
+      <div class="ph" data-img="thema2" data-label="Foto: Vortrag Abnehmen"></div>
+    </div>
+
+    <div class="trow rv">
+      <div>
+        <span class="micro" data-t="t.r3.tag">Muskelaufbau</span>
+        <h3 data-t="t.r3.h3">Muskelaufbau-Basics</h3>
+        <p data-t="t.r3.p">Training und Ernährung richtig kombinieren, ohne Dogma und ohne die Fehler, die Jahre kosten.</p>
+        <span class="dur" data-t="t.r3.dur">45–60 min + Q&amp;A</span>
+      </div>
+      <div class="ph" data-img="thema3" data-label="Foto: Vortrag Muskelaufbau"></div>
+    </div>
+
+    <div class="trow rv">
+      <div>
+        <span class="micro" data-t="t.r4.tag">Mindset</span>
+        <h3 data-t="t.r4.h3">Gewohnheiten, die bleiben</h3>
+        <p data-t="t.r4.p">Motivation ist überbewertet: Systeme schlagen Willenskraft. Das stärkste Bindungs-Thema für dein Studio.</p>
+        <span class="dur" data-t="t.r4.dur">45–60 min + Q&amp;A</span>
+      </div>
+      <div class="ph" data-img="thema4" data-label="Foto: Vortrag Gewohnheiten"></div>
+    </div>
+
+    <p class="note rv" data-t="t.note">Eigene Themenwünsche? Gerne. Genau dafür ist das erste Gespräch da.</p>
+  </div>
+</section>
+
+<section id="ablauf">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="micro" data-t="a.kicker">Der Ablauf</span>
+      <h2 data-t="a.h2">Vom ersten Gespräch zum Vortragsabend</h2>
+    </div>
+    <div class="steps">
+      <div class="step rv"><span class="rn">I</span><b data-t="a.s1.b">Kurzes Gespräch</b><p data-t="a.s1.p">Kurz, unverbindlich und flexibel: Wir finden heraus, ob es passt.</p></div>
+      <div class="step rv" data-d="1"><span class="rn">II</span><b data-t="a.s2.b">Ankündigung</b><p data-t="a.s2.p">Wir liefern alles: Grafiken, Texte und Social-Media-Ankündigungen.</p></div>
+      <div class="step rv" data-d="2"><span class="rn">III</span><b data-t="a.s3.b">Der Vortrag</b><p data-t="a.s3.p">45 bis 60 Minuten plus offene Fragerunde. Ein Abend, der motiviert.</p></div>
+      <div class="step rv" data-d="3"><span class="rn">IV</span><b data-t="a.s4.b">Meet &amp; Greet</b><p data-t="a.s4.p">Wir bleiben da, beantworten jede Frage und motivieren Gäste, Mitglieder zu werden.</p></div>
+    </div>
+    <blockquote class="rv" data-t="a.quote">Unser Anspruch: kein Frontalvortrag, sondern ein Abend voller Mehrwert. Deine Mitglieder gehen raus mit dem Gefühl, <em>sofort loslegen zu müssen</em>. Und der Ort, an dem sie loslegen, ist dein Studio.</blockquote>
+  </div>
+</section>
+
+<section id="coaching">
+  <div class="wrap grid">
+    <div class="shot ph rv" data-img="coaching" data-label="Foto: Coaching-Situation">
+      <svg class="cam" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 8h3l2-2.5h6L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.4"/></svg>
+    </div>
+    <div class="rv" data-d="1">
+      <span class="micro" data-t="c.kicker">Und nach dem Vortrag? · 1:1 Coaching</span>
+      <h2 data-t="c.h2">Ein Ziel: dir zeigen, wie <em>einfach Abnehmen</em> sein kann.</h2>
+      <p class="motto" data-t="c.motto">Ernährung und Sport müssen sich deinem Alltag anpassen, nicht umgekehrt. Mitten im Job, mitten in der Familie, mitten im Leben.</p>
+      <ul class="points" data-t="c.liste">
+        <li>Wöchentliche Gespräche: Herausforderungen angehen, nächste Schritte planen</li>
+        <li>Individuelle Strategien, abgestimmt auf deine Ziele und Wünsche</li>
+        <li>Immer erreichbar, auch an Feiertagen</li>
+        <li>Kleine Schritte statt großer Umbrüche, damit du nie wieder von vorn anfangen musst</li>
+      </ul>
+      <a class="btn" href="#kontakt" data-t="c.btn">Kostenloses Erstgespräch</a>
+    </div>
+  </div>
+</section>
+
+<section id="ergebnisse" style="padding-top:0">
+  <div class="wrap grid">
+    <div class="rv">
+      <span class="micro" data-t="e.kicker">Deine Ergebnisse</span>
+      <h2 data-t="e.h2">Womit du rechnen kannst</h2>
+      <ul style="margin-top:26px" data-t="e.liste">
+        <li>Ein Körper, den du hältst: ohne Crash-Diät, ohne Jo-Jo-Effekt</li>
+        <li>Heißhunger, der leiser wird</li>
+        <li>Abnehmen, das funktioniert, auch wenn die Woche drunter und drüber geht</li>
+        <li>Kleidung, in der du dich wieder wohlfühlst</li>
+        <li>Essen ohne schlechtes Gewissen, auch beim Italiener und im Urlaub</li>
+        <li>Wissen, das bleibt: Du verstehst, was du tust und warum es funktioniert</li>
+      </ul>
+      <p class="promise" data-t="e.promise">Was wir versprechen: Veränderung, die hält.</p>
+    </div>
+    <div class="shot ph rv" data-d="1" data-img="ergebnisse" data-label="Foto: Alltag / Training"></div>
   </div>
 </section>
 
@@ -309,40 +425,26 @@ footer .legal{font-size:.8rem;max-width:520px}
     <div class="head c rv">
       <span class="micro" data-t="team.kicker">Über uns</span>
       <h2 data-t="team.h2">Zwei Wege. Ein Team.</h2>
-      <p data-t="team.p">Florian war der Dünne, Manuel der Übergewichtige — zusammen kennen wir beide Enden der Skala und den Weg zur besten eigenen Form.</p>
     </div>
     <div class="grid">
       <div class="person rv">
-        <div class="shot ph" data-img="florian" data-label="Portrait Florian — folgt">
-          <svg class="cam" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 8h3l2-2.5h6L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.4"/></svg>
+        <div class="ph" data-img="florian" data-label="Portrait Florian"></div>
+        <div class="tx">
+          <span class="role" data-t="team.flo.role">Ernährung &amp; Lifestyle</span>
+          <h3 data-t="team.flo.name">Florian</h3>
+          <p data-t="team.flo.text">Vom Dünnsten im Raum zu dem, den alle fragen. Sein Talent: Wissenschaft so erklären, dass du sie am nächsten Tag umsetzen kannst.</p>
         </div>
-        <span class="role" data-t="team.flo.role">Ernährungsexperte</span>
-        <h3 data-t="team.flo.name">Florian</h3>
-        <p data-t="team.flo.text">Vom Dünnsten im Raum zu dem, den alle fragen: eigene Transformation, Marathon-Finisher beim ersten Versuch, Background im Hochleistungsvertrieb. Sein Talent: Wissenschaft so erklären, dass du sie morgen umsetzt.</p>
       </div>
       <div class="person rv" data-d="1">
-        <div class="shot ph" data-img="manuel" data-label="Portrait Manuel — folgt">
-          <svg class="cam" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 8h3l2-2.5h6L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.4"/></svg>
+        <div class="ph" data-img="manuel" data-label="Portrait Manuel"></div>
+        <div class="tx">
+          <span class="role" data-t="team.mani.role">Training, Sport &amp; Fitness</span>
+          <h3 data-t="team.mani.name">Manuel</h3>
+          <p data-t="team.mani.text">Dem Fußball-Profitraum zum Greifen nah, dann kam das Übergewicht. Heute in der besten Form seines Lebens: Er kennt beide Seiten.</p>
         </div>
-        <span class="role" data-t="team.mani.role">Sportexperte</span>
-        <h3 data-t="team.mani.name">Manuel</h3>
-        <p data-t="team.mani.text">Dem Fußball-Profitraum zum Greifen nah — dann kam das Übergewicht. Heute ist er in der besten Form seines Lebens und kennt beide Seiten: ganz unten und richtig stark. Genau das bringt er in jedes Coaching mit.</p>
       </div>
     </div>
-  </div>
-</section>
-
-<section id="case">
-  <div class="wrap grid">
-    <div class="shot ph rv" data-img="casestudy" data-label="Video &amp; Fotos vom Vortrag — folgen">
-      <svg class="cam" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><polygon points="10,8.5 16,12 10,15.5"/><rect x="3.5" y="5" width="17" height="14" rx="2"/></svg>
-    </div>
-    <div class="rv" data-d="1">
-      <span class="micro" data-t="case.kicker">Live erlebt</span>
-      <h2 data-t="case.h2">So sieht ein Abend mit uns aus</h2>
-      <blockquote data-t="case.quote">Kein trockener Frontalvortrag, sondern ein Abend, der unterhält, hängen bleibt — und alle mit umsetzbaren nächsten Schritten nach Hause schickt.</blockquote>
-      <cite data-t="case.cite">— unser Anspruch an jeden Vortrag</cite>
-    </div>
+    <p class="duoline rv" data-t="team.duo">Zusammen kennen wir beide Enden der Skala. Florian bringt die Ernährung, Manuel das Training, und du das Ziel.</p>
   </div>
 </section>
 
@@ -359,9 +461,9 @@ footer .legal{font-size:.8rem;max-width:520px}
 <section id="cta">
   <div class="wrap rv">
     <span class="micro" data-t="cta.kicker">Der erste Schritt</span>
-    <h2 data-t="cta.h2">Reden wir — unverbindlich</h2>
-    <p data-t="cta.p">20–30 Minuten am Telefon oder per Videocall: Wir hören zu, du bekommst eine ehrliche Einschätzung. Kein Verkaufsgespräch. Versprochen.</p>
-    <a class="btn" href="#kontakt" data-t="cta.btn">Jetzt Erstgespräch anfragen</a>
+    <h2 data-t="cta.h2">Reden wir. Unverbindlich.</h2>
+    <p data-t="cta.p">20 bis 30 Minuten am Telefon oder per Videocall: Wir hören zu, du bekommst eine ehrliche Einschätzung und einen konkreten ersten Schritt.</p>
+    <a class="btn" href="#kontakt" data-t="cta.btn1">Kostenloses Erstgespräch</a><a class="btn line" href="#kontakt" data-t="cta.btn2">Vortrag anfragen</a>
   </div>
 </section>
 
@@ -373,7 +475,7 @@ footer .legal{font-size:.8rem;max-width:520px}
     </div>
     <div class="panel rv">
       <div>
-        <p class="sub" data-t="k.p">Ob Erstgespräch fürs Coaching oder Vortragsanfrage für dein Studio — schreib uns, wir melden uns innerhalb von 48 Stunden.</p>
+        <p class="sub" data-t="k.p">Ob kostenloses Erstgespräch fürs Coaching oder Vortragsanfrage für dein Studio: Schreib uns, wir melden uns innerhalb von 48 Stunden.</p>
         <div class="direct" id="directbox"></div>
       </div>
       <form id="anfrage">
@@ -388,7 +490,7 @@ footer .legal{font-size:.8rem;max-width:520px}
         <label for="f-msg">Nachricht (optional)</label>
         <textarea id="f-msg" name="msg" rows="3" placeholder="Dein Ziel, deine Fragen, dein Zeitrahmen …"></textarea>
         <button type="submit" class="btn" data-t="k.send">Anfrage senden</button>
-        <p id="formhint">Dein E-Mail-Programm öffnet sich mit der fertigen Anfrage — nur noch absenden.</p>
+        <p id="formhint">Dein E-Mail-Programm öffnet sich mit der fertigen Anfrage. Nur noch absenden.</p>
       </form>
     </div>
   </div>
@@ -402,7 +504,7 @@ footer .legal{font-size:.8rem;max-width:520px}
     </div>
     <div class="impblock rv" data-t="imp.inhaber">
       <h3>Medieninhaber &amp; Herausgeber</h3>
-      <p>WeightLab — Florian Augustin &amp; Manuel Mustermann GesbR (Platzhalter)<br>Musterstraße 12/3<br>1010 Wien, Österreich</p>
+      <p>WeightLab, Florian Augustin &amp; Manuel Mustermann GesbR (Platzhalter)<br>Musterstraße 12/3<br>1010 Wien, Österreich</p>
     </div>
     <div class="impblock rv" data-t="imp.kontakt">
       <h3>Kontakt</h3>
@@ -434,16 +536,18 @@ footer .legal{font-size:.8rem;max-width:520px}
     "telefon": "",
     "ort": "Innsbruck · Wien & Umgebung"
   },
-  "vortraege": [
-    { "titel": "Ernährungsmythen im Gym", "kurz": "Detox-Kuren, „abends keine Kohlenhydrate“, das anabole Fenster — wir räumen auf mit den Mythen, die Fortschritt kosten.", "dauer": "45–60 min + Q&A" },
-    { "titel": "Abnehmen, das hält", "kurz": "Warum Crash-Diäten scheitern — und was stattdessen funktioniert: Protein-first, ehrliches Defizit, Gewohnheiten für den echten Alltag.", "dauer": "45–60 min + Q&A" },
-    { "titel": "Muskelaufbau-Basics", "kurz": "Training und Ernährung richtig kombinieren: progressive Überlastung, Protein ohne Dogma, die Fehler, die Jahre kosten.", "dauer": "45–60 min + Q&A" },
-    { "titel": "Gewohnheiten, die bleiben", "kurz": "Motivation ist überbewertet — Systeme schlagen Willenskraft. Routinen, mit denen man auch im Februar noch trainiert.", "dauer": "45–60 min + Q&A" }
+  "anliegen": [
+    "Kostenloses Erstgespräch – Coaching",
+    "Vortrag: Ernährungsmythen im Gym",
+    "Vortrag: Abnehmen, das hält",
+    "Vortrag: Muskelaufbau-Basics",
+    "Vortrag: Gewohnheiten, die bleiben",
+    "Sonstiges"
   ],
   "stimmen": [
     { "tag": "Vortrag", "text": "Hier steht bald die erste echte Stimme aus unserem Vortrag bei happyfitness.", "name": "Teilnehmerin, Vortragsabend" },
-    { "tag": "Coaching", "text": "Hier kommt die erste Coaching-Kundenstimme hin — sobald es die ersten Ergebnisse gibt.", "name": "Coaching-Kundin" },
-    { "tag": "Studio", "text": "Und hier die Stimme des Studio-Betreibers — der wichtigste Beweis für andere Studios.", "name": "Studio-Betreiber" }
+    { "tag": "Coaching", "text": "Hier kommt die erste Coaching-Kundenstimme hin, sobald es die ersten Ergebnisse gibt.", "name": "Coaching-Kundin" },
+    { "tag": "Studio", "text": "Und hier die Stimme des Studio-Betreibers: der wichtigste Beweis für andere Studios.", "name": "Studio-Betreiber" }
   ]
 }
 </script>
@@ -452,19 +556,11 @@ WL_READY.then((WLC)=>{
 
 const D  = JSON.parse(document.getElementById("wl-defaults").textContent);
 const OV = (WLC && WLC.post && WLC.post.data) || {};
-const KONTAKT   = Object.assign({}, D.kontakt, OV.kontakt || {});
-const VORTRAEGE = OV.vortraege || D.vortraege;
-const STIMMEN   = OV.stimmen   || D.stimmen;
+const KONTAKT  = Object.assign({}, D.kontakt, OV.kontakt || {});
+const STIMMEN  = OV.stimmen  || D.stimmen;
+const ANLIEGEN = OV.anliegen || D.anliegen;
 
 const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
-const RN = ["01","02","03","04","05","06","07","08"];
-
-document.getElementById("talklist").innerHTML = VORTRAEGE.map((v,i)=>`
-  <div class="row rv">
-    <span class="num">${RN[i]||""}</span>
-    <div><h3>${esc(v.titel)}</h3><p>${esc(v.kurz)}</p></div>
-    <span class="dur">${esc(v.dauer)}</span>
-  </div>`).join("");
 
 document.getElementById("voicelist").innerHTML = STIMMEN.map((s,i)=>`
   <div class="voice rv" data-d="${i}">
@@ -474,16 +570,12 @@ document.getElementById("voicelist").innerHTML = STIMMEN.map((s,i)=>`
     <b>${esc(s.name)}</b>
   </div>`).join("");
 
-/* Kontakt-Box + Formular-Select */
 let h = `<div><b>E-Mail</b> ${esc(KONTAKT.email)}</div>`;
 if(KONTAKT.telefon)   h += `<div><b>Telefon</b> ${esc(KONTAKT.telefon)}</div>`;
 if(KONTAKT.instagram) h += `<div><b>Instagram</b> ${esc(KONTAKT.instagram)}</div>`;
 h += `<div><b>Region</b> ${esc(KONTAKT.ort)}</div>`;
 document.getElementById("directbox").innerHTML = h;
-document.getElementById("f-anliegen").innerHTML =
-  `<option>Kostenloses Erstgespräch – Coaching</option>` +
-  VORTRAEGE.map(v=>`<option>Vortrag: ${esc(v.titel)}</option>`).join("") +
-  `<option>Sonstiges</option>`;
+document.getElementById("f-anliegen").innerHTML = ANLIEGEN.map(a=>`<option>${esc(a)}</option>`).join("");
 
 document.getElementById("anfrage").addEventListener("submit",e=>{
   e.preventDefault();
@@ -500,17 +592,15 @@ document.getElementById("anfrage").addEventListener("submit",e=>{
   window.location.href = `mailto:${KONTAKT.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 });
 
-/* Nav & Menü */
 const nav = document.getElementById("nav");
 addEventListener("scroll",()=>nav.classList.toggle("sc",scrollY>30),{passive:true});
 const mb = document.getElementById("menu-btn"), mn = document.getElementById("mnav");
 mb.addEventListener("click",()=>mn.classList.toggle("open"));
 mn.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>mn.classList.remove("open")));
 
-/* Reveals */
 const io = new IntersectionObserver(es=>es.forEach(en=>{
   if(en.isIntersecting){en.target.classList.add("in");io.unobserve(en.target);}
-}),{threshold:.15});
+}),{threshold:.12});
 document.querySelectorAll(".rv").forEach(el=>io.observe(el));
 
 });
