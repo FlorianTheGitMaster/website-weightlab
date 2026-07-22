@@ -273,6 +273,12 @@ section{position:relative;padding:110px 0}
 @media(max-width:600px){.ctapanel{padding:44px 24px}}
 
 /* ═══════════════ KONTAKT ═══════════════ */
+.kswitch{display:flex;justify-content:center;gap:0;margin-bottom:46px}
+.kswitch .kbtn{font-family:var(--cond);font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  padding:14px 30px;border:1px solid var(--line);color:var(--muted);background:var(--panel);transition:all .25s;cursor:pointer}
+.kswitch .kbtn:first-child{border-right:none}
+.kswitch .kbtn.on{background:var(--gold);border-color:var(--gold);color:var(--accent-ink)}
+
 .kpanel{position:relative;z-index:1;border:1px solid var(--line2);background:var(--panel);padding:60px;
   display:grid;grid-template-columns:1fr 1.15fr;gap:60px}
 @media(max-width:880px){.kpanel{grid-template-columns:1fr;padding:32px}}
@@ -467,7 +473,7 @@ footer .legal{font-size:.8rem;max-width:520px}
     <h1 id="heroline-v" aria-label="Vorträge, nach denen niemand mehr kündigen will."></h1>
     <p class="sub" data-t="v.hero.sub">Evidenzbasierte Vorträge über Ernährung, Training und Lifestylefaktoren wie Schlaf und Stress. Wir vermitteln nicht theoretisches Halbwissen, sondern echte Erfahrung aus Coaching und Wissenschaft. Deine Mitglieder gehen mit dem Gefühl raus, gar nicht anders zu können, als jetzt loszulegen. Dein Studio wird zum Ort, der Ergebnisse liefert.</p>
     <div class="ctas">
-      <a class="btn" href="#/kontakt">Vortrag anfragen</a><a class="btn ghost" href="#themen" data-scroll="#themen">Die Themen</a>
+      <a class="btn" href="#/kontakt-studio">Vortrag anfragen</a><a class="btn ghost" href="#themen" data-scroll="#themen">Die Themen</a>
     </div>
     <div id="seal" aria-hidden="true">
       <svg class="ring" viewBox="0 0 128 128">
@@ -542,7 +548,7 @@ footer .legal{font-size:.8rem;max-width:520px}
       <span class="kicker" data-t="v.cta.kicker">Kontakt</span>
       <h2 data-t="v.cta.h2">Hol dir den Vortrag <em>in dein Studio</em></h2>
       <p data-t="v.cta.p">Schick uns eine kurze Anfrage, wir melden uns innerhalb von 48 Stunden. Rahmen, Termin und Konditionen klären wir dann ganz unkompliziert im Gespräch.</p>
-      <a class="btn" href="#/kontakt" data-t="v.cta.btn">Vortrag anfragen</a>
+      <a class="btn" href="#/kontakt-studio" data-t="v.cta.btn">Vortrag anfragen</a>
     </div>
   </div>
 </section>
@@ -634,31 +640,35 @@ footer .legal{font-size:.8rem;max-width:520px}
 
 <section id="kontakt" style="padding-top:170px">
   <div class="wrap">
+    <div class="kswitch reveal" role="tablist" aria-label="Anliegen wählen">
+      <button class="kbtn" data-kmode="coaching" role="tab">Fürs Coaching</button>
+      <button class="kbtn" data-kmode="studio" role="tab">Für dein Studio</button>
+    </div>
     <div class="sechead center reveal">
-      <span class="kickline"><span class="kicker" data-t="k.kicker">Kontakt</span></span>
-      <h2 data-t="k.h2">Reden wir. <em>Unverbindlich.</em></h2>
-      <p data-t="k.p">Ob kostenloses Erstgespräch fürs Coaching oder Vortragsanfrage für dein Studio: Schreib uns, wir melden uns innerhalb von 48 Stunden.</p>
+      <span class="kickline"><span class="kicker" id="k-kicker"></span></span>
+      <h2 id="k-h2"></h2>
+      <p id="k-p"></p>
     </div>
     <div class="kpanel reveal">
       <div class="side">
-        <span class="kickline"><span class="kicker" data-t="k.side.kicker">Direkt erreichen</span></span>
-        <h2 data-t="k.side.h2">Wir freuen uns <em>auf dich</em></h2>
-        <p data-t="k.side.p">Das kostenlose Erstgespräch dauert 20 bis 30 Minuten: Wir hören zu, du bekommst eine ehrliche Einschätzung, ohne Verkaufsdruck.</p>
+        <span class="kickline"><span class="kicker" id="k-side-kicker"></span></span>
+        <h2 id="k-side-h2"></h2>
+        <p id="k-side-p"></p>
         <div class="direct" id="directbox"></div>
       </div>
       <form id="anfrage">
-        <label for="f-anliegen">Anliegen</label>
-        <select id="f-anliegen" name="anliegen"></select>
-        <label for="f-name">Name</label>
+        <label for="f-name" id="l-name">Name</label>
         <input id="f-name" name="name" placeholder="Dein Name" required>
-        <label for="f-mail">E-Mail oder Telefon</label>
+        <div id="row-firma">
+          <label for="f-firma" id="l-firma">Studio</label>
+          <input id="f-firma" name="firma" placeholder="Name deines Studios">
+        </div>
+        <label for="f-mail" id="l-mail">E-Mail oder Telefon</label>
         <input id="f-mail" name="rueckruf" placeholder="Wie erreichen wir dich am besten?" required>
-        <label for="f-firma">Studio / Firma (optional)</label>
-        <input id="f-firma" name="firma" placeholder="Nur bei Vortrags- oder Firmenanfragen">
-        <label for="f-msg">Nachricht (optional)</label>
-        <textarea id="f-msg" name="msg" rows="3" placeholder="Dein Ziel, deine Fragen, dein Zeitrahmen …"></textarea>
-        <button type="submit" class="btn">Anfrage senden</button>
-        <p id="formhint">Dein E-Mail-Programm öffnet sich mit der fertigen Anfrage — nur noch absenden.</p>
+        <label for="f-msg" id="l-msg">Nachricht (optional)</label>
+        <textarea id="f-msg" name="msg" rows="3"></textarea>
+        <button type="submit" class="btn" id="k-send"></button>
+        <p id="formhint">Dein E-Mail-Programm öffnet sich mit der fertigen Anfrage. Nur noch absenden.</p>
       </form>
     </div>
   </div>
@@ -743,9 +753,30 @@ footer .legal{font-size:.8rem;max-width:520px}
     "email": "office@weightlab.at",
     "instagram": "",
     "telefon": "",
-    "ort": "Innsbruck · Wien & Umgebung",
     "fotoFlorian": "",
     "fotoManuel": ""
+  },
+  "kontakt_coaching": {
+    "kicker": "Kostenloses Erstgespräch",
+    "h2": "Reden wir. <em>Unverbindlich.</em>",
+    "p": "Du musst nichts vorbereiten und nichts versprechen. Erzähl uns kurz, wo du stehst, wir melden uns innerhalb von 48 Stunden.",
+    "side_kicker": "Direkt erreichen",
+    "side_h2": "Wir freuen uns <em>auf dich</em>",
+    "side_p": "Das kostenlose Erstgespräch dauert 20 bis 30 Minuten: Wir hören zu, du bekommst eine ehrliche Einschätzung, ohne Verkaufsdruck. Ganz egal, ob du danach mit uns arbeitest oder nicht.",
+    "msg_placeholder": "Dein Ziel, deine Fragen, was dich gerade beschäftigt …",
+    "btn": "Erstgespräch anfragen",
+    "betreff": "Kostenloses Erstgespräch Coaching"
+  },
+  "kontakt_studio": {
+    "kicker": "Vortragsanfrage",
+    "h2": "Holen wir den Abend <em>in dein Studio</em>",
+    "p": "Kurze Anfrage genügt: Wir melden uns innerhalb von 48 Stunden. Rahmen, Termin und Konditionen klären wir direkt im Gespräch.",
+    "side_kicker": "Direkt erreichen",
+    "side_h2": "Sprechen wir über <em>dein Studio</em>",
+    "side_p": "Im ersten Gespräch geht es um deine Mitglieder, deine Ziele und ob es passt. Kurz, unverbindlich und flexibel.",
+    "msg_placeholder": "Eure Ziele, Wünsche, euer Zeitraum …",
+    "btn": "Vortrag anfragen",
+    "betreff": "Vortragsanfrage"
   },
   "vortraege": [
     { "tag": "Ernährung", "titel": "Ernährungsmythen im Gym", "kurz": "Detox-Kuren, „abends keine Kohlenhydrate“, das anabole Fenster: Wir räumen auf mit den Mythen, die deine Mitglieder Fortschritt kosten. Unterhaltsam, wissenschaftlich fundiert und garantiert diskussionsfreudig.", "dauer": "45–60 min + Q&A", "icon": "myth" },
@@ -874,7 +905,7 @@ document.getElementById("talkgrid").innerHTML = VORTRAEGE.map((v,i)=>`
     <div class="top"><span class="tag">${esc(v.tag)}</span><span class="tico">${ICONS[v.icon]||""}</span></div>
     <h3>${esc(v.titel)}</h3>
     <p>${esc(v.kurz)}</p>
-    <div class="foot"><span class="dur">${esc(v.dauer)}</span><a class="go" href="#/kontakt">Anfragen</a></div>
+    <div class="foot"><span class="dur">${esc(v.dauer)}</span><a class="go" href="#/kontakt-studio">Anfragen</a></div>
   </article>`).join("");
 
 const RN = ["I","II","III","IV","V","VI"];
@@ -900,41 +931,54 @@ function fillHeadline(id, words){
 fillHeadline("heroline-c", HEADLINE_C);
 fillHeadline("heroline-v", HEADLINE_V);
 
-/* ── Kontakt: Direktdaten + Anliegen-Select + Fotos ── */
+/* ── Kontakt: zwei Modi (Coaching / Studio), Direktdaten, Fotos ── */
+const KC = Object.assign({}, D.kontakt_coaching, OV.kontakt_coaching || {});
+const KS = Object.assign({}, D.kontakt_studio,  OV.kontakt_studio  || {});
+let KMODE = "coaching";
+function setKmode(m){
+  KMODE = m;
+  const T = m === "studio" ? KS : KC;
+  document.getElementById("k-kicker").textContent = T.kicker;
+  document.getElementById("k-h2").innerHTML = T.h2;
+  document.getElementById("k-p").textContent = T.p;
+  document.getElementById("k-side-kicker").textContent = T.side_kicker;
+  document.getElementById("k-side-h2").innerHTML = T.side_h2;
+  document.getElementById("k-side-p").textContent = T.side_p;
+  document.getElementById("f-msg").placeholder = T.msg_placeholder;
+  document.getElementById("k-send").textContent = T.btn;
+  document.getElementById("row-firma").style.display = m === "studio" ? "" : "none";
+  document.getElementById("f-firma").required = m === "studio";
+  document.querySelectorAll(".kswitch .kbtn").forEach(b=>b.classList.toggle("on", b.dataset.kmode===m));
+}
+document.querySelectorAll(".kswitch .kbtn").forEach(b=>b.addEventListener("click",()=>setKmode(b.dataset.kmode)));
+
 (function(){
   let h = `<div><b>E-Mail</b> ${esc(KONTAKT.email)}</div>`;
   if(KONTAKT.telefon)   h += `<div><b>Telefon</b> ${esc(KONTAKT.telefon)}</div>`;
   if(KONTAKT.instagram) h += `<div><b>Instagram</b> ${esc(KONTAKT.instagram)}</div>`;
-  h += `<div><b>Region</b> ${esc(KONTAKT.ort)}</div>`;
   document.getElementById("directbox").innerHTML = h;
-  document.getElementById("f-anliegen").innerHTML =
-    `<option>Kostenloses Erstgespräch – Coaching</option>` +
-    VORTRAEGE.map(v=>`<option>Vortrag: ${esc(v.titel)}</option>`).join("") +
-    `<option>Sonstiges</option>`;
   if(KONTAKT.fotoFlorian) document.getElementById("frame-florian").innerHTML = `<img src="${esc(KONTAKT.fotoFlorian)}" alt="Florian">`;
   if(KONTAKT.fotoManuel)  document.getElementById("frame-manuel").innerHTML  = `<img src="${esc(KONTAKT.fotoManuel)}" alt="Manuel">`;
+  setKmode("coaching");
 })();
 
-/* ── Formular → fertige E-Mail ── */
+/* ── Formular → fertige E-Mail (Betreff & Felder je nach Modus) ── */
 document.getElementById("anfrage").addEventListener("submit",e=>{
   e.preventDefault();
   const d = new FormData(e.target);
-  const subject = `${d.get("anliegen")||"Anfrage"} – ${d.get("name")||""}`.trim();
-  const body = [
-    `Anliegen: ${d.get("anliegen")||"-"}`,
-    `Name: ${d.get("name")||"-"}`,
-    `Erreichbar unter: ${d.get("rueckruf")||"-"}`,
-    `Studio/Firma: ${d.get("firma")||"-"}`,
-    ``, `Nachricht:`, d.get("msg")||"-"
-  ].join("\n");
+  const T = KMODE === "studio" ? KS : KC;
+  const subject = `${T.betreff} – ${d.get("name")||""}`.trim();
+  const lines = [`Name: ${d.get("name")||"-"}`];
+  if(KMODE === "studio") lines.push(`Studio: ${d.get("firma")||"-"}`);
+  lines.push(`Erreichbar unter: ${d.get("rueckruf")||"-"}`, ``, `Nachricht:`, d.get("msg")||"-");
   document.getElementById("formhint").style.display="block";
-  window.location.href = `mailto:${KONTAKT.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  window.location.href = `mailto:${KONTAKT.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
 });
 
 /* ── Router (Registerkarten-Navigation zwischen den Seiten) ──
    Sandbox-sicher: funktioniert auch ohne History-API / Hash-Zugriff
    (z. B. in der Artefakt-Vorschau mit about:srcdoc). */
-const PAGES = ["coaching","vortraege","ueber-uns","kontakt","impressum"];
+const PAGES = ["coaching","vortraege","ueber-uns","kontakt","kontakt-studio","impressum"];
 let currentPage = "coaching";
 function pageFromHash(){
   try{
@@ -945,8 +989,10 @@ function pageFromHash(){
 }
 function showPage(p){
   currentPage = p;
-  document.querySelectorAll(".page").forEach(pg=>pg.classList.toggle("on", pg.id==="page-"+p));
-  document.querySelectorAll("[data-page-link]").forEach(a=>a.classList.toggle("active", a.dataset.pageLink===p));
+  const view = p === "kontakt-studio" ? "kontakt" : p;
+  document.querySelectorAll(".page").forEach(pg=>pg.classList.toggle("on", pg.id==="page-"+view));
+  document.querySelectorAll("[data-page-link]").forEach(a=>a.classList.toggle("active", a.dataset.pageLink===view));
+  if(view === "kontakt") setKmode(p === "kontakt-studio" ? "studio" : "coaching");
   window.scrollTo(0,0);
   onScroll();
 }
