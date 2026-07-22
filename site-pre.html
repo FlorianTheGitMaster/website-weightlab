@@ -272,6 +272,13 @@ section{position:relative;padding:110px 0}
 .ctapanel .fine{font-size:.85rem;color:var(--faint);margin:18px 0 0;font-style:italic;font-family:var(--serif)}
 @media(max-width:600px){.ctapanel{padding:44px 24px}}
 
+/* ═══════════════ COACHING AUSGEGRAUT (Admin-Schalter) ═══════════════ */
+.wl-coaching-off [data-page-link="coaching"],
+.wl-coaching-off #mobilemenu a[href="#/coaching"],
+.wl-coaching-off #nav .cta,
+.wl-coaching-off .kbtn[data-kmode="coaching"]{opacity:.35;filter:grayscale(1)}
+.wl-coaching-off #page-coaching{filter:grayscale(.9);opacity:.55}
+
 /* ═══════════════ KONTAKT ═══════════════ */
 .kswitch{display:flex;justify-content:center;gap:0;margin-bottom:46px}
 .kswitch .kbtn{font-family:var(--cond);font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
@@ -958,7 +965,7 @@ document.querySelectorAll(".kswitch .kbtn").forEach(b=>b.addEventListener("click
   document.getElementById("directbox").innerHTML = h;
   if(KONTAKT.fotoFlorian) document.getElementById("frame-florian").innerHTML = `<img src="${esc(KONTAKT.fotoFlorian)}" alt="Florian">`;
   if(KONTAKT.fotoManuel)  document.getElementById("frame-manuel").innerHTML  = `<img src="${esc(KONTAKT.fotoManuel)}" alt="Manuel">`;
-  setKmode("coaching");
+  setKmode((WLC && WLC.coachingAktiv === false) ? "studio" : "coaching");
 })();
 
 /* ── Formular → fertige E-Mail (Betreff & Felder je nach Modus) ── */
@@ -1068,8 +1075,8 @@ function countUp(row){
   });
 }
 
-/* Start */
-showPage(pageFromHash() || "coaching");
+/* Start — bei ausgegrautem Coaching starten Besucher auf den Vorträgen */
+showPage(pageFromHash() || ((WLC && WLC.coachingAktiv === false) ? "vortraege" : "coaching"));
 
 }); /* Ende WL_READY-Wrapper */
 </script>

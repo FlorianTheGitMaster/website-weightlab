@@ -107,6 +107,14 @@ a{color:var(--accent)}
         </div>
       </div>
       <div class="card">
+        <h2>Coaching-Bereich</h2>
+        <p class="hint">„Ausgegraut" dimmt Coaching auf beiden Websites: Menüpunkte, Coaching-Seite, Erstgespräch-Knöpfe. Die Startseite wird dann „Vorträge", das Kontaktformular startet im Studio-Modus.</p>
+        <div class="radio-row" id="coachingswitch">
+          <label data-v="an"><input type="radio" name="coach" value="an"> <span><b>Aktiv</b><br><small>Coaching normal sichtbar</small></span></label>
+          <label data-v="aus"><input type="radio" name="coach" value="aus"> <span><b>Ausgegraut</b><br><small>Coaching gedimmt, Vorträge im Fokus</small></span></label>
+        </div>
+      </div>
+      <div class="card">
         <h2>Akzentfarbe der Post-Website</h2>
         <p class="hint">Weiß bleibt Basis — die Akzentfarbe ist frei wählbar (Salbei, Schwarz, …).</p>
         <div class="swatches" id="swatches"></div>
@@ -187,6 +195,7 @@ async function load(){
   else{content={activeSite:"pre",accent:{post:"#6e7f4f"},pre:{texts:{},data:{},images:{}},post:{texts:{},data:{},images:{}}};contentSha=null}
   ["pre","post"].forEach(s=>{content[s]=content[s]||{};content[s].texts=content[s].texts||{};content[s].data=content[s].data||{};content[s].images=content[s].images||{}});
   content.accent=content.accent||{post:"#6e7f4f"};
+  if(typeof content.coachingAktiv==="undefined")content.coachingAktiv=true;
   await harvest("pre","site-pre.html");
   await harvest("post","site-post.html");
   render();
@@ -208,6 +217,12 @@ function render(){
     const on=l.dataset.v===content.activeSite;
     l.classList.toggle("on",on);l.querySelector("input").checked=on;
     l.querySelector("input").onchange=()=>{content.activeSite=l.dataset.v;render()};
+  });
+  /* Coaching an/aus */
+  document.querySelectorAll("#coachingswitch label").forEach(l=>{
+    const on=(l.dataset.v==="an")===(content.coachingAktiv!==false);
+    l.classList.toggle("on",on);l.querySelector("input").checked=on;
+    l.querySelector("input").onchange=()=>{content.coachingAktiv=(l.dataset.v==="an");render()};
   });
   /* Farbe */
   const sw=$("#swatches");sw.innerHTML="";

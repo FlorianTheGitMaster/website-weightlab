@@ -30,6 +30,7 @@ window.WL_READY = fetch('content.json?ts=' + Date.now(), { cache: 'no-store' })
       if (site === 'post' && C.accent && C.accent.post) {
         document.documentElement.style.setProperty('--accent', C.accent.post);
       }
+      if (C.coachingAktiv === false) document.body.classList.add('wl-coaching-off');
     };
     if (document.readyState !== 'loading') apply();
     else document.addEventListener('DOMContentLoaded', apply);
