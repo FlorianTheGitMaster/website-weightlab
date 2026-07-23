@@ -284,13 +284,35 @@ section{position:relative;padding:110px 0}
 .arrows li::before{content:"→";color:var(--gold);flex:0 0 auto}
 
 /* ═══════════════ ZITAT-BAND ═══════════════ */
-.quote{padding:130px 0 110px;background:var(--bg2);border-top:1px solid var(--line);text-align:center;position:relative;overflow:hidden}
-.quote .wrap{position:relative;max-width:920px}
-.quote .mark{position:absolute;top:-72px;left:50%;transform:translateX(-50%);font-family:var(--serif);
-  font-size:clamp(10rem,20vw,15rem);line-height:1;color:var(--gold);opacity:.1;pointer-events:none;user-select:none}
-.quote .q{position:relative;font-family:var(--serif);font-size:clamp(1.5rem,3.4vw,2.3rem);line-height:1.55;max-width:840px;margin:0 auto;font-style:italic}
-.quote .q em{color:var(--gold)}
-.quote .q::after{content:"";display:block;width:64px;height:1px;background:var(--gold);margin:42px auto 0}
+.quote{padding:120px 0;background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  text-align:center;position:relative;overflow:hidden}
+.quote::before{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:940px;height:540px;
+  border-radius:50%;background:radial-gradient(closest-side,var(--glow),transparent 72%);pointer-events:none}
+.qbox{position:relative;max-width:900px;margin:0 auto;padding:16px 76px}
+.qbox .mark{position:absolute;font-family:var(--serif);font-size:7.5rem;line-height:1;color:var(--gold);opacity:.32;
+  user-select:none;pointer-events:none}
+.qbox .mark.open{top:-34px;left:0}
+.qbox .mark.close{bottom:-52px;right:0}
+.qkicker{display:flex;align-items:center;justify-content:center;gap:16px;font-family:var(--cond);font-size:11px;
+  font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:30px}
+.qkicker::before,.qkicker::after{content:"";height:1px;width:54px;background:var(--gold);
+  transform:scaleX(0);transition:transform .8s .3s}
+.qkicker::before{transform-origin:100% 50%}
+.qkicker::after{transform-origin:0 50%}
+.quote .inview .qkicker::before,.quote .inview .qkicker::after{transform:scaleX(1)}
+.quote .q{position:relative;font-family:var(--serif);font-size:clamp(1.5rem,3.3vw,2.25rem);line-height:1.6;font-style:italic}
+.quote .q em{color:var(--gold);background:linear-gradient(var(--gold),var(--gold)) no-repeat 0 94%/0 2px;
+  transition:background-size 1.1s cubic-bezier(.2,.7,.2,1) .7s;padding-bottom:3px}
+.quote .inview .q em{background-size:100% 2px}
+.qsig{margin-top:40px;display:flex;align-items:center;justify-content:center;gap:14px;
+  font-family:var(--cond);font-size:11px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--faint)}
+.qsig::before{content:"";width:44px;height:1px;background:var(--gold)}
+@media(max-width:640px){
+  .qbox{padding:10px 34px}
+  .qbox .mark{font-size:4.6rem}
+  .qbox .mark.open{top:-16px}
+  .qbox .mark.close{bottom:-30px}
+}
 
 /* ═══════════════ CTA-PANEL ═══════════════ */
 .ctapanel{position:relative;z-index:1;border:1px solid var(--line2);background:var(--panel);padding:64px 48px;text-align:center;max-width:860px;margin:0 auto}
@@ -594,9 +616,14 @@ footer .legal{font-size:.8rem;max-width:520px}
 </section>
 
 <div class="quote">
-  <div class="wrap reveal">
-    <span class="mark" aria-hidden="true">„</span>
-    <p class="q" data-t="v.quote">Unser Anspruch: kein Frontalvortrag, sondern ein Abend voller Mehrwert. Deine Mitglieder gehen raus mit dem Gefühl, <em>sofort loslegen zu müssen</em>. Und der Ort, an dem sie loslegen, ist dein Studio.</p>
+  <div class="wrap">
+    <div class="qbox reveal">
+      <span class="mark open" aria-hidden="true">„</span>
+      <span class="mark close" aria-hidden="true">“</span>
+      <span class="qkicker" data-t="v.quote.kicker">Unser Anspruch</span>
+      <p class="q" data-t="v.quote">Kein Frontalvortrag, sondern ein Abend voller Mehrwert. Deine Mitglieder gehen raus mit dem Gefühl, <em>sofort loslegen zu müssen</em>. Und der Ort, an dem sie loslegen, ist dein Studio.</p>
+      <div class="qsig" data-t="v.quote.sig">Florian &amp; Manuel · WeightLab</div>
+    </div>
   </div>
 </div>
 
