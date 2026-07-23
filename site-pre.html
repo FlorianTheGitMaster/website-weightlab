@@ -156,9 +156,13 @@ section{position:relative;padding:110px 0}
 .band[data-scroll]{cursor:pointer}
 .band .chunk{display:flex;align-items:center;white-space:nowrap}
 .band .chunk span{font-family:var(--cond);font-weight:900;text-transform:uppercase;letter-spacing:.08em;
-  font-size:1.5rem;padding:0 28px;color:var(--band-fill);-webkit-text-stroke:1px var(--band-stroke)}
+  font-size:1.5rem;padding:0 28px;color:var(--band-fill);-webkit-text-stroke:1px var(--band-stroke);
+  transition:color .3s,-webkit-text-stroke-color .3s,transform .35s cubic-bezier(.2,.7,.2,1)}
+.band .chunk span:hover{color:var(--gold);-webkit-text-stroke-color:var(--gold);transform:translateY(-3px)}
 .band .chunk span.solid{color:var(--ink);-webkit-text-stroke:0}
-.band .chunk i{color:var(--gold);font-style:normal;font-size:1rem}
+.band .chunk span.solid:hover{color:var(--gold)}
+.band .chunk i{color:var(--gold);font-style:normal;font-size:1rem;display:inline-block}
+.band:hover .chunk i{animation:spin 2.4s linear infinite}
 @keyframes marquee{to{transform:translateX(-50%)}}
 
 /* ═══════════════ GEMEINSAME SECTION-ELEMENTE ═══════════════ */
@@ -556,7 +560,7 @@ footer .legal{font-size:.8rem;max-width:520px}
 
 <header class="hero">
   <div class="glow" aria-hidden="true"></div>
-  <div class="watermark" aria-hidden="true">Vorträge</div>
+  <div class="watermark" aria-hidden="true">WeightLab</div>
   <div class="wrap inner">
     <span class="kicker" data-t="v.hero.kicker">Vorträge für Fitnessstudios, die Mitglieder begeistern und binden</span>
     <h1 id="heroline-v" aria-label="Vorträge, nach denen niemand mehr kündigen will."></h1>
