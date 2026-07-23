@@ -141,13 +141,14 @@
           "end": 2,
           "prefix": "",
           "suffix": "",
-          "lbl": "Fachgebiete auf einer Bühne"
+          "lbl": "Experten auf einer Bühne"
         },
         {
           "end": 0,
           "prefix": "",
           "suffix": "",
-          "lbl": "Aufwand für dein Team"
+          "lbl": "Aufwand für dein Team",
+          "start": 100
         }
       ],
       "ablauf": [

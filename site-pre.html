@@ -175,7 +175,16 @@ section{position:relative;padding:110px 0}
 
 /* ═══════════════ KARTEN-GRID (Warum / Kernpunkte) ═══════════════ */
 .cardgrid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1px;background:var(--line)}
-.bcard{background:var(--panel);padding:38px 30px;position:relative;overflow:hidden;transition:background .3s}
+.bcard{background:var(--panel);padding:38px 30px;position:relative;overflow:hidden;transition:background .3s;
+  opacity:0;transform:translateY(44px) scale(.97)}
+.cardgrid.inview .bcard{animation:cardin .75s cubic-bezier(.2,.7,.2,1) forwards}
+.cardgrid.inview .bcard:nth-child(1){animation-delay:.05s}
+.cardgrid.inview .bcard:nth-child(2){animation-delay:.18s}
+.cardgrid.inview .bcard:nth-child(3){animation-delay:.31s}
+.cardgrid.inview .bcard:nth-child(4){animation-delay:.44s}
+.cardgrid.inview .bcard:nth-child(5){animation-delay:.57s}
+.cardgrid.inview .bcard:nth-child(6){animation-delay:.7s}
+@keyframes cardin{to{opacity:1;transform:none}}
 .bcard:hover{background:var(--panel2)}
 .bcard::before{content:"";position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,var(--gold),transparent);
   transform:scaleX(0);transform-origin:0 50%;transition:transform .45s}
@@ -291,6 +300,29 @@ section{position:relative;padding:110px 0}
 .ctapanel .fine{font-size:.85rem;color:var(--faint);margin:18px 0 0;font-style:italic;font-family:var(--serif)}
 @media(max-width:600px){.ctapanel{padding:44px 24px}}
 
+/* ═══════════════ DESIGN-SPECIALS ═══════════════ */
+::selection{background:var(--gold);color:var(--accent-ink)}
+::-webkit-scrollbar{width:11px}
+::-webkit-scrollbar-track{background:var(--bg2)}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:6px;border:3px solid var(--bg2)}
+::-webkit-scrollbar-thumb:hover{background:var(--gold2)}
+html{scrollbar-color:var(--gold) var(--bg2);scrollbar-width:thin}
+#nav .logo{transition:letter-spacing .35s}
+#nav .logo:hover{letter-spacing:.09em}
+.btn{transition:background .25s,transform .25s}
+.btn:hover{transform:translateY(-2px)}
+.arrows li{transition:transform .3s}
+.arrows li:hover{transform:translateX(6px)}
+.duo .dmono{transition:background .35s,color .35s,border-color .35s}
+.duo .dcell:hover .dmono{background:var(--gold);color:var(--accent-ink);border-color:var(--gold)}
+.ctapanel::before,.ctapanel::after{content:"";position:absolute;width:44px;height:44px;border:1px solid var(--gold);
+  transition:width .4s,height .4s;pointer-events:none}
+.ctapanel::before{top:-1px;left:-1px;border-right:none;border-bottom:none}
+.ctapanel::after{bottom:-1px;right:-1px;border-left:none;border-top:none}
+.ctapanel:hover::before,.ctapanel:hover::after{width:66px;height:66px}
+.frame img{transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.portrait:hover .frame img{transform:scale(1.045)}
+
 /* ═══════════════ COACHING AUSGEBLENDET (Admin-Schalter) ═══════════════ */
 .wl-coaching-off #nav .links li:has(a[data-page-link="coaching"]),
 .wl-coaching-off #mobilemenu a[href="#/coaching"],
@@ -341,6 +373,7 @@ footer .legal{font-size:.8rem;max-width:520px}
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
   .reveal{opacity:1;transform:none}
+  .bcard{opacity:1;transform:none}
   .hero h1 .w{opacity:1;transform:none}
   .hero p.sub,.hero .ctas,#seal{opacity:1}
   html{scroll-behavior:auto}
@@ -837,8 +870,8 @@ footer .legal{font-size:.8rem;max-width:520px}
   "stats_v": [
     { "end": 60, "prefix": "45–", "suffix": "", "lbl": "Minuten + Q&A" },
     { "end": 100, "prefix": "", "suffix": " %", "lbl": "wissenschaftlich fundiert" },
-    { "end": 2, "prefix": "", "suffix": "", "lbl": "Fachgebiete auf einer Bühne" },
-    { "end": 0, "prefix": "", "suffix": "", "lbl": "Aufwand für dein Team" }
+    { "end": 2, "prefix": "", "suffix": "", "lbl": "Experten auf einer Bühne" },
+    { "end": 0, "start": 100, "prefix": "", "suffix": "", "lbl": "Aufwand für dein Team" }
   ],
   "ablauf": [
     { "titel": "Kurzes Gespräch", "text": "Telefonisch oder vor Ort: Auf Basis eurer Wünsche und Ziele und unserer Praxiserfahrung finden wir heraus, ob wir zusammenarbeiten werden. Kurz, unverbindlich und flexibel." },
@@ -902,14 +935,14 @@ const ICONS = {
 };
 
 /* ── Grids & Listen ── */
-document.getElementById("benefitgrid").innerHTML = BENEFITS.map((b,i)=>`
-  <div class="bcard reveal" data-d="${i}">
+document.getElementById("benefitgrid").innerHTML = BENEFITS.map(b=>`
+  <div class="bcard">
     <div class="ico">${ICONS[b.icon]||""}</div>
     <h3>${esc(b.titel)}</h3><p>${esc(b.text)}</p>
   </div>`).join("");
 
-document.getElementById("kerngrid").innerHTML = KERNPUNKTE.map((b,i)=>`
-  <div class="bcard reveal" data-d="${i%3}">
+document.getElementById("kerngrid").innerHTML = KERNPUNKTE.map(b=>`
+  <div class="bcard">
     <div class="ico">${ICONS[b.icon]||""}</div>
     <h3>${esc(b.titel)}</h3><p>${esc(b.text)}</p>
   </div>`).join("");
@@ -917,7 +950,7 @@ document.getElementById("kerngrid").innerHTML = KERNPUNKTE.map((b,i)=>`
 document.getElementById("ergebnisliste").innerHTML = ERGEBNISSE.map(t=>`<li>${esc(t)}</li>`).join("");
 
 const statHTML = s => `
-  <div class="stat"><div class="num" data-end="${s.end}" data-prefix="${esc(s.prefix)}" data-suffix="${esc(s.suffix)}">${esc(s.prefix)}0${esc(s.suffix)}</div><div class="lbl">${esc(s.lbl)}</div></div>`;
+  <div class="stat"><div class="num" data-end="${s.end}" data-start="${s.start||0}" data-prefix="${esc(s.prefix)}" data-suffix="${esc(s.suffix)}">${esc(s.prefix)}${s.start||0}${esc(s.suffix)}</div><div class="lbl">${esc(s.lbl)}</div></div>`;
 document.getElementById("statrow-v").innerHTML = STATS_V.map(statHTML).join("");
 
 /* Duo-Leiste (Coaching): wir zwei — wer kümmert sich um was */
@@ -1089,16 +1122,16 @@ const io = new IntersectionObserver(entries=>{
     io.unobserve(en.target);
   });
 },{threshold:.18});
-document.querySelectorAll(".reveal, #ablauf, .statrow, .sechead").forEach(el=>io.observe(el));
+document.querySelectorAll(".reveal, #ablauf, .statrow, .sechead, .cardgrid").forEach(el=>io.observe(el));
 
 function countUp(row){
   if(row.dataset.counted) return; row.dataset.counted = "1";
   row.querySelectorAll(".num").forEach(el=>{
-    const end = +el.dataset.end, pre = el.dataset.prefix, suf = el.dataset.suffix;
+    const end = +el.dataset.end, start = +(el.dataset.start||0), pre = el.dataset.prefix, suf = el.dataset.suffix;
     const t0 = performance.now(), dur = 1400;
     (function tick(t){
       const k = Math.min(1,(t-t0)/dur), e = 1-Math.pow(1-k,3);
-      el.textContent = pre + Math.round(end*e) + suf;
+      el.textContent = pre + Math.round(start + (end-start)*e) + suf;
       if(k<1) requestAnimationFrame(tick);
     })(t0);
   });
