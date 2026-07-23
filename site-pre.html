@@ -129,7 +129,16 @@ section{position:relative;padding:110px 0}
 .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--ghost-line);margin-left:14px}
 .btn.ghost:hover{border-color:var(--gold);color:var(--gold);background:transparent}
 /* rotierendes Siegel */
-#seal{margin:64px auto 0;width:128px;height:128px;position:relative;opacity:0;animation:fadeup 1s 1.2s forwards}
+#seal{margin:64px auto 0;width:128px;height:128px;position:relative;opacity:0;animation:fadeup 1s 1.2s forwards;
+  cursor:pointer;transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+#seal:hover{transform:translateY(-4px)}
+#seal::before{content:"";position:absolute;inset:-12px;border:1px solid var(--gold);border-radius:50%;
+  opacity:0;transform:scale(.82);transition:opacity .45s,transform .55s cubic-bezier(.2,.7,.2,1);pointer-events:none}
+#seal:hover::before{opacity:.55;transform:scale(1)}
+#seal .mid .fa{transition:transform .45s cubic-bezier(.2,.7,.2,1),color .3s}
+#seal:hover .mid .fa{transform:scale(1.18) rotate(-6deg);color:var(--gold2)}
+#seal:hover svg.ring text{fill:var(--gold) !important}
+#seal:hover .arrow{color:var(--gold)}
 #seal svg.ring{position:absolute;inset:0;animation:spin 22s linear infinite}
 #seal .mid{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column}
 #seal .mid .fa{font-family:var(--serif);font-style:italic;font-size:2rem;color:var(--gold)}
@@ -555,7 +564,7 @@ footer .legal{font-size:.8rem;max-width:520px}
     <div class="ctas">
       <a class="btn" href="#/kontakt-studio">Vortrag anfragen</a><a class="btn ghost" href="#themen" data-scroll="#themen">Die Themen</a>
     </div>
-    <div id="seal" aria-hidden="true">
+    <div id="seal" data-scroll="#warum" title="Weiterscrollen">
       <svg class="ring" viewBox="0 0 128 128">
         <defs><path id="circ" d="M64,64 m-52,0 a52,52 0 1,1 104,0 a52,52 0 1,1 -104,0"/></defs>
         <text style="font-family:var(--cond);font-size:9px;letter-spacing:.13em;text-transform:uppercase;fill:var(--faint)">
