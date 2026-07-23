@@ -908,10 +908,10 @@ footer .legal{font-size:.8rem;max-width:520px}
     { "initial": "M", "name": "Manuel", "role": "kümmert sich um Training, Fitness & alles rund ums Studio" }
   ],
   "stats_v": [
-    { "end": 60, "prefix": "45–", "suffix": "", "lbl": "Minuten + Q&A" },
-    { "end": 100, "prefix": "", "suffix": " %", "lbl": "wissenschaftlich fundiert" },
-    { "end": 2, "prefix": "", "suffix": "", "lbl": "Experten auf einer Bühne" },
-    { "end": 0, "start": 100, "prefix": "", "suffix": "", "lbl": "Aufwand für dein Team" }
+    { "end": 60, "dur": 2800, "prefix": "45–", "suffix": "", "lbl": "Minuten + Q&A" },
+    { "end": 100, "dur": 4200, "prefix": "", "suffix": " %", "lbl": "wissenschaftlich fundiert" },
+    { "end": 2, "dur": 1800, "prefix": "", "suffix": "", "lbl": "Experten auf einer Bühne" },
+    { "end": 0, "start": 100, "dur": 5000, "prefix": "", "suffix": "", "lbl": "Aufwand für dein Team" }
   ],
   "ablauf": [
     { "titel": "Kurzes Gespräch", "text": "Telefonisch oder vor Ort: Auf Basis eurer Wünsche und Ziele und unserer Praxiserfahrung finden wir heraus, ob wir zusammenarbeiten werden. Kurz, unverbindlich und flexibel." },
@@ -990,7 +990,7 @@ document.getElementById("kerngrid").innerHTML = KERNPUNKTE.map(b=>`
 document.getElementById("ergebnisliste").innerHTML = ERGEBNISSE.map(t=>`<li>${esc(t)}</li>`).join("");
 
 const statHTML = s => `
-  <div class="stat"><div class="num" data-end="${s.end}" data-start="${s.start||0}" data-prefix="${esc(s.prefix)}" data-suffix="${esc(s.suffix)}">${esc(s.prefix)}${s.start||0}${esc(s.suffix)}</div><div class="lbl">${esc(s.lbl)}</div></div>`;
+  <div class="stat"><div class="num" data-end="${s.end}" data-start="${s.start||0}" data-dur="${s.dur||3200}" data-prefix="${esc(s.prefix)}" data-suffix="${esc(s.suffix)}">${esc(s.prefix)}${s.start||0}${esc(s.suffix)}</div><div class="lbl">${esc(s.lbl)}</div></div>`;
 document.getElementById("statrow-v").innerHTML = STATS_V.map(statHTML).join("");
 
 /* Duo-Leiste (Coaching): wir zwei — wer kümmert sich um was */
@@ -1168,7 +1168,7 @@ function countUp(row){
   if(row.dataset.counted) return; row.dataset.counted = "1";
   row.querySelectorAll(".num").forEach((el,i)=>{
     const end = +el.dataset.end, start = +(el.dataset.start||0), pre = el.dataset.prefix, suf = el.dataset.suffix;
-    const dur = 3200, delay = i*260, t0 = performance.now() + delay;
+    const dur = +(el.dataset.dur||3200), delay = i*260, t0 = performance.now() + delay;
     (function tick(t){
       const k = Math.min(1, Math.max(0, t-t0)/dur), e = 1-Math.pow(1-k,4);
       el.textContent = pre + Math.round(start + (end-start)*e) + suf;
