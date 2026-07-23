@@ -249,7 +249,29 @@
           "t": "will.",
           "em": 1
         }
-      ]
+      ],
+      "kontakt_coaching": {
+        "kicker": "Kostenloses Erstgespräch",
+        "h2": "Reden wir. <em>Unverbindlich.</em>",
+        "p": "Du musst nichts vorbereiten und nichts versprechen. Erzähl uns kurz, wo du stehst, wir melden uns innerhalb von 48 Stunden.",
+        "side_kicker": "Direkt erreichen",
+        "side_h2": "Wir freuen uns <em>auf dich</em>",
+        "side_p": "Das kostenlose Erstgespräch dauert 20 bis 30 Minuten: Wir hören zu, du bekommst eine ehrliche Einschätzung, ohne Verkaufsdruck. Ganz egal, ob du danach mit uns arbeitest oder nicht.",
+        "msg_placeholder": "Dein Ziel, deine Fragen, was dich gerade beschäftigt …",
+        "btn": "Erstgespräch anfragen",
+        "betreff": "Kostenloses Erstgespräch Coaching"
+      },
+      "kontakt_studio": {
+        "kicker": "Vortragsanfrage",
+        "h2": "Holen wir den Abend <em>in dein Studio</em>",
+        "p": "Kurze Anfrage genügt: Wir melden uns innerhalb von 48 Stunden. Rahmen, Termin und Konditionen klären wir direkt im Gespräch.",
+        "side_kicker": "Direkt erreichen",
+        "side_h2": "Sprechen wir über <em>dein Studio</em>",
+        "side_p": "Im ersten Gespräch geht es um deine Mitglieder, deine Ziele und ob es passt. Kurz, unverbindlich und flexibel.",
+        "msg_placeholder": "Eure Ziele, Wünsche, euer Zeitraum …",
+        "btn": "Vortrag anfragen",
+        "betreff": "Vortragsanfrage"
+      }
     },
     "images": {}
   },
@@ -291,5 +313,5 @@
     },
     "images": {}
   },
-  "coachingAktiv": true
+  "coachingAktiv": false
 }
