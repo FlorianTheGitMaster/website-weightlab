@@ -1126,14 +1126,14 @@ document.querySelectorAll(".reveal, #ablauf, .statrow, .sechead, .cardgrid").for
 
 function countUp(row){
   if(row.dataset.counted) return; row.dataset.counted = "1";
-  row.querySelectorAll(".num").forEach(el=>{
+  row.querySelectorAll(".num").forEach((el,i)=>{
     const end = +el.dataset.end, start = +(el.dataset.start||0), pre = el.dataset.prefix, suf = el.dataset.suffix;
-    const t0 = performance.now(), dur = 1400;
+    const dur = 3200, delay = i*260, t0 = performance.now() + delay;
     (function tick(t){
-      const k = Math.min(1,(t-t0)/dur), e = 1-Math.pow(1-k,3);
+      const k = Math.min(1, Math.max(0, t-t0)/dur), e = 1-Math.pow(1-k,4);
       el.textContent = pre + Math.round(start + (end-start)*e) + suf;
       if(k<1) requestAnimationFrame(tick);
-    })(t0);
+    })(performance.now());
   });
 }
 
