@@ -272,12 +272,11 @@ section{position:relative;padding:110px 0}
 .ctapanel .fine{font-size:.85rem;color:var(--faint);margin:18px 0 0;font-style:italic;font-family:var(--serif)}
 @media(max-width:600px){.ctapanel{padding:44px 24px}}
 
-/* ═══════════════ COACHING AUSGEGRAUT (Admin-Schalter) ═══════════════ */
-.wl-coaching-off [data-page-link="coaching"],
+/* ═══════════════ COACHING AUSGEBLENDET (Admin-Schalter) ═══════════════ */
+.wl-coaching-off #nav .links li:has(a[data-page-link="coaching"]),
 .wl-coaching-off #mobilemenu a[href="#/coaching"],
-.wl-coaching-off #nav .cta,
-.wl-coaching-off .kbtn[data-kmode="coaching"]{opacity:.35;filter:grayscale(1)}
-.wl-coaching-off #page-coaching{filter:grayscale(.9);opacity:.55}
+.wl-coaching-off footer .flinks a[href="#/coaching"],
+.wl-coaching-off .kswitch{display:none}
 
 /* ═══════════════ KONTAKT ═══════════════ */
 .kswitch{display:flex;justify-content:center;gap:0;margin-bottom:46px}
@@ -846,6 +845,7 @@ WL_READY.then((WLC)=>{
 
 const D  = JSON.parse(document.getElementById("wl-defaults").textContent);
 const OV = (WLC && WLC.pre && WLC.pre.data) || {};
+const COACHING_OFF = WLC && WLC.coachingAktiv === false;
 
 const KONTAKT    = Object.assign({}, D.kontakt, OV.kontakt || {});
 const VORTRAEGE  = OV.vortraege  || D.vortraege;
@@ -965,7 +965,15 @@ document.querySelectorAll(".kswitch .kbtn").forEach(b=>b.addEventListener("click
   document.getElementById("directbox").innerHTML = h;
   if(KONTAKT.fotoFlorian) document.getElementById("frame-florian").innerHTML = `<img src="${esc(KONTAKT.fotoFlorian)}" alt="Florian">`;
   if(KONTAKT.fotoManuel)  document.getElementById("frame-manuel").innerHTML  = `<img src="${esc(KONTAKT.fotoManuel)}" alt="Manuel">`;
-  setKmode((WLC && WLC.coachingAktiv === false) ? "studio" : "coaching");
+  setKmode(COACHING_OFF ? "studio" : "coaching");
+  if(COACHING_OFF){
+    const cta = document.querySelector("#nav .cta");
+    if(cta){ cta.textContent = "Vortrag anfragen"; cta.setAttribute("href","#/kontakt-studio"); }
+    const mm = document.querySelector('#mobilemenu a[href="#/kontakt"]');
+    if(mm){ mm.innerHTML = "<em>Vortrag anfragen</em>"; mm.setAttribute("href","#/kontakt-studio"); }
+    const duoBtn = document.querySelector("#duo .btn");
+    if(duoBtn){ duoBtn.textContent = "Vortrag anfragen"; duoBtn.setAttribute("href","#/kontakt-studio"); }
+  }
 })();
 
 /* ── Formular → fertige E-Mail (Betreff & Felder je nach Modus) ── */
@@ -994,11 +1002,12 @@ function pageFromHash(){
   return null;
 }
 function showPage(p){
+  if(COACHING_OFF && p === "coaching") p = "vortraege";
   currentPage = p;
   const view = p === "kontakt-studio" ? "kontakt" : p;
   document.querySelectorAll(".page").forEach(pg=>pg.classList.toggle("on", pg.id==="page-"+view));
   document.querySelectorAll("[data-page-link]").forEach(a=>a.classList.toggle("active", a.dataset.pageLink===view));
-  if(view === "kontakt") setKmode(p === "kontakt-studio" ? "studio" : "coaching");
+  if(view === "kontakt") setKmode((COACHING_OFF || p === "kontakt-studio") ? "studio" : "coaching");
   window.scrollTo(0,0);
   onScroll();
 }

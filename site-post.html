@@ -68,10 +68,11 @@ h2{font-size:clamp(1.9rem,4vw,2.8rem)}
 #mnav.open{display:flex}
 #mnav a{font-family:var(--serif);font-size:1.8rem;text-decoration:none;padding:8px}
 
-/* ─── Coaching ausgegraut (Admin-Schalter) ─── */
-.wl-coaching-off a[href="#/coaching"],
-.wl-coaching-off #mnav a[href="#/coaching"]{opacity:.35;filter:grayscale(1)}
-.wl-coaching-off #page-coaching{filter:grayscale(.9);opacity:.55}
+/* ─── Coaching ausgeblendet (Admin-Schalter) ─── */
+.wl-coaching-off #nav .links li:has(a[href="#/coaching"]),
+.wl-coaching-off #mnav a[href="#/coaching"],
+.wl-coaching-off .hero .btn.line[href="#/coaching"],
+.wl-coaching-off footer .flinks a[href="#/coaching"]{display:none}
 
 /* ─── Foto-Slots ─── */
 .ph{background:var(--soft);position:relative;overflow:hidden;background-size:cover;background-position:center}
@@ -662,9 +663,10 @@ WL_READY.then((WLC)=>{
 
 const D  = JSON.parse(document.getElementById("wl-defaults").textContent);
 const OV = (WLC && WLC.post && WLC.post.data) || {};
+const COACHING_OFF = WLC && WLC.coachingAktiv === false;
 const KONTAKT  = Object.assign({}, D.kontakt, OV.kontakt || {});
 const STIMMEN  = OV.stimmen  || D.stimmen;
-const ANLIEGEN = OV.anliegen || D.anliegen;
+const ANLIEGEN = (OV.anliegen || D.anliegen).filter(a => !(COACHING_OFF && /coaching|erstgespräch/i.test(a)));
 
 const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
 
@@ -709,6 +711,7 @@ function pageFromHash(){
   return null;
 }
 function showPage(p){
+  if(COACHING_OFF && p === "coaching") p = "vortraege";
   currentPage = p;
   document.querySelectorAll(".page").forEach(pg=>pg.classList.toggle("on", pg.id==="page-"+p));
   document.querySelectorAll("[data-page-link]").forEach(a=>a.classList.toggle("active", a.dataset.pageLink===p));
