@@ -132,22 +132,22 @@
           "lbl": "Minuten + Q&A"
         },
         {
-          "end": 4,
+          "end": 100,
           "prefix": "",
-          "suffix": "",
-          "lbl": "Themen zur Wahl"
+          "suffix": " %",
+          "lbl": "wissenschaftlich fundiert"
         },
         {
-          "end": 48,
-          "prefix": "",
-          "suffix": " h",
-          "lbl": "Antwort auf deine Anfrage"
-        },
-        {
-          "end": 1,
+          "end": 2,
           "prefix": "",
           "suffix": "",
-          "lbl": "Abend, der hängen bleibt"
+          "lbl": "Fachgebiete auf einer Bühne"
+        },
+        {
+          "end": 0,
+          "prefix": "",
+          "suffix": "",
+          "lbl": "Aufwand für dein Team"
         }
       ],
       "ablauf": [
@@ -185,7 +185,10 @@
         "Training",
         "Gewohnheiten",
         "Mythen aufräumen",
-        "Kundenbindung"
+        "Kundenbindung",
+        "Weniger Kündigungen",
+        "Neue Mitglieder",
+        "Zusatzumsatz"
       ],
       "headline_c": [
         {
